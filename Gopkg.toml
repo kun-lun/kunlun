@@ -1,0 +1,11 @@
+required = [
+    "github.com/xplaceholder/artifacts",
+    "github.com/xplaceholder/digester",
+    "github.com/xplaceholder/ashandler",
+    "github.com/xplaceholder/tfhandler",
+    "github.com/xplaceholder/executor",
+    "github.com/xplaceholder/infra-producer",
+    "github.com/xplaceholder/migration-producer",
+    "github.com/xplaceholder/deployment-producer",
+    "github.com/xplaceholder/test-infra"
+]
