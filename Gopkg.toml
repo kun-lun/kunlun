@@ -1,11 +1,47 @@
 required = [
-    "github.com/xplaceholder/artifacts",
-    "github.com/xplaceholder/digester",
-    "github.com/xplaceholder/ashandler",
-    "github.com/xplaceholder/tfhandler",
-    "github.com/xplaceholder/executor",
-    "github.com/xplaceholder/infra-producer",
-    "github.com/xplaceholder/migration-producer",
-    "github.com/xplaceholder/deployment-producer",
-    "github.com/xplaceholder/test-infra"
+    "github.com/xplaceholder/artifacts/pkg/apis",
+    "github.com/xplaceholder/digester/pkg/apis",
+    "github.com/xplaceholder/ashandler/pkg/apis",
+    "github.com/xplaceholder/tfhandler/pkg/apis",
+    "github.com/xplaceholder/executor/pkg/apis",
+    "github.com/xplaceholder/infra-producer/pkg/apis",
+    "github.com/xplaceholder/migration-producer/pkg/apis",
+    "github.com/xplaceholder/deployment-producer/pkg/apis",
+    "github.com/xplaceholder/test-infra/pkg/apis"
 ]
+
+[[constraint]]
+    name = "github.com/xplaceholder/artifacts"
+    branch = "draft"
+
+[[constraint]]
+    name = "github.com/xplaceholder/digester"
+    branch = "draft"
+
+[[constraint]]
+    name = "github.com/xplaceholder/ashandler"
+    branch = "draft"
+
+[[constraint]]
+    name = "github.com/xplaceholder/tfhandler"
+    branch = "draft"
+
+[[constraint]]
+    name = "github.com/xplaceholder/executor"
+    branch = "draft"
+
+[[constraint]]
+    name = "github.com/xplaceholder/infra-producer"
+    branch = "draft"
+
+[[constraint]]
+    name = "github.com/xplaceholder/migration-producer"
+    branch = "draft"
+
+[[constraint]]
+    name = "github.com/xplaceholder/deployment-producer"
+    branch = "draft"
+
+[[constraint]]
+    name = "github.com/xplaceholder/test-infra"
+    branch = "draft"
