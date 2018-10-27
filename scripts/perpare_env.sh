@@ -13,5 +13,8 @@ do
   pushd $GOPATH/src/github.com/xplaceholder/$i
     git remote remove origin
     git remote add origin git@github.com:xplaceholder/$i.git
+    # checkout the draft branch for now, remove this after v0.1 merged to the master.
+    git fetch
+    git checkout draft
   popd
 done
