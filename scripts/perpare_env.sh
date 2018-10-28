@@ -18,3 +18,6 @@ do
     git checkout draft
   popd
 done
+
+go get github.com/onsi/ginkgo/ginkgo
+go get github.com/onsi/gomega/...
