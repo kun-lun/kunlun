@@ -4,12 +4,78 @@
 [[projects]]
   branch = "draft"
   name = "github.com/xplaceholder/artifacts"
+  packages = [
+    "pkg/apis",
+    "pkg/models"
+  ]
+  revision = "1ffc54bfa7f5d8dfa4ee724f2b7ebc784e86af44"
+
+[[projects]]
+  branch = "draft"
+  name = "github.com/xplaceholder/ashandler"
+  packages = [
+    "generator",
+    "pkg/apis"
+  ]
+  revision = "661f68f12482692e7b9732356ad9371140d2d870"
+
+[[projects]]
+  branch = "draft"
+  name = "github.com/xplaceholder/deployment-producer"
   packages = ["pkg/apis"]
-  revision = "aedcef6aabfd45631c5eab78be351e9f817b1ba3"
+  revision = "e47c5f2051bbf7962a688a8a57ed29ad5804fb25"
+
+[[projects]]
+  branch = "draft"
+  name = "github.com/xplaceholder/digester"
+  packages = ["pkg/apis"]
+  revision = "b2112f02f627425791b352d1b9cea9efa741bf86"
+
+[[projects]]
+  branch = "draft"
+  name = "github.com/xplaceholder/executor"
+  packages = ["pkg/apis"]
+  revision = "7b16c35177ae4af66f445ee105fac5a0dcc6d776"
+
+[[projects]]
+  branch = "draft"
+  name = "github.com/xplaceholder/infra-producer"
+  packages = ["pkg/apis"]
+  revision = "3559a3435ad1cc4b38e86269b5b4acab3cd91d1b"
+
+[[projects]]
+  branch = "draft"
+  name = "github.com/xplaceholder/migration-producer"
+  packages = ["pkg/apis"]
+  revision = "6d111942e386025965c6cf4be00438bc077c86b9"
+
+[[projects]]
+  branch = "draft"
+  name = "github.com/xplaceholder/report-producer"
+  packages = ["pkg/apis"]
+  revision = "a7ec77fa62bbf29e2622178171f495136e7d2718"
+
+[[projects]]
+  branch = "draft"
+  name = "github.com/xplaceholder/test-infra"
+  packages = ["pkg/apis"]
+  revision = "f2cbb3bfa6499938397045c3a9ba4e7ab8d27169"
+
+[[projects]]
+  branch = "draft"
+  name = "github.com/xplaceholder/tfhandler"
+  packages = ["pkg/apis"]
+  revision = "a06ef0f9beccdf36d633870966e59528a5238937"
+
+[[projects]]
+  branch = "draft"
+  name = "github.com/xplaceholder/verification-producer"
+  packages = ["pkg/apis"]
+  revision = "405272e64acb48f3f87c1416c2320d11c21829f4"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "c7dc796283fea5b60f5b0aa0b415f7c57d3fd09d1fb613d1b0a27c6b6d7d05cb"
+  inputs-digest = "bd6964ef9d1ce0756532149793a5027a85279b8e896bf9d4a84badcbe6427ed7"
   solver-name = "gps-cdcl"
   solver-version = 1
