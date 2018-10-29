@@ -1,0 +1,4 @@
+databases:
+  - type: mysql
+    version: 5.6
+    storage: 500
