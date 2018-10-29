@@ -1,0 +1,25 @@
+---
+vm:
+  - name: D2V3
+    instance_type: Standard_D2_v3
+  - name: D2V4
+    instance_type: Standard_D2_v4
+
+
+vm_group:
+  region: eastus
+  vms:
+    - name: D2V3
+      count: 3
+    - name: D2V4
+      count: 4
+    
+load_balancer:
+  sku: basic
+  port: 80
+      
+mysql:
+  version: 5.7
+  v_core: 4
+  storage: 500
+...
