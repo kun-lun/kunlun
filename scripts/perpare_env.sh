@@ -16,6 +16,8 @@ do
     # checkout the draft branch for now, remove this after v0.1 merged to the master.
     git fetch
     git checkout draft
+    git branch --set-upstream-to=origin/draft draft
+    git pull
   popd
 done
 
