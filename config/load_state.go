@@ -7,6 +7,7 @@ import (
 	flags "github.com/jessevdk/go-flags"
 	"github.com/xplaceholder/common/fileio"
 	"github.com/xplaceholder/xplaceholder/application"
+	"github.com/xplaceholder/xplaceholder/storage"
 )
 
 type logger interface {
@@ -20,7 +21,7 @@ type fs interface {
 	fileio.FileWriter
 }
 
-func NewConfig(logger logger, fs fs) Config {
+func NewConfig(bootstrap storage.StateBootstrap, logger logger, fs fs) Config {
 	return Config{
 		stateBootstrap: bootstrap,
 		logger:         logger,
@@ -29,7 +30,7 @@ func NewConfig(logger logger, fs fs) Config {
 }
 
 type Config struct {
-	stateBootstrap StateBootstrap
+	stateBootstrap storage.StateBootstrap
 	logger         logger
 	fs             fs
 }

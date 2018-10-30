@@ -5,11 +5,14 @@ import (
 	"log"
 	"os"
 
+	"github.com/spf13/afero"
 	"github.com/xplaceholder/xplaceholder/config"
 	"github.com/xplaceholder/xplaceholder/storage"
 
 	"github.com/xplaceholder/xplaceholder/application"
 )
+
+var Version = "dev"
 
 func main() {
 
@@ -31,11 +34,11 @@ func main() {
 	stderrLogger.Println(string(stateJSON))
 
 	// // File IO
-	// fs := afero.NewOsFs()
-	// afs := &afero.Afero{Fs: fs}
+	fs := afero.NewOsFs()
+	afs := &afero.Afero{Fs: fs}
 	newConfig := config.NewConfig(stateBootstrap, stderrLogger, afs)
 
-	appConfig, err := newConfig.Bootstrap(globals, remainingArgs, len(os.Args))
+	_, err = newConfig.Bootstrap(globals, remainingArgs, len(os.Args))
 	if err != nil {
 		log.Fatalf("\n\n%s\n", err)
 	}
