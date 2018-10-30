@@ -8,15 +8,22 @@ import (
 	"github.com/xplaceholder/executor/commands"
 )
 
+type usage interface {
+	Print()
+	PrintCommandUsage(command, message string)
+}
+
 type App struct {
 	commands      commands.CommandSet
 	configuration Configuration
+	usage         usage
 }
 
-func New(commands commands.CommandSet, configuration Configuration) App {
+func New(commands commands.CommandSet, configuration Configuration, usage usage) App {
 	return App{
 		commands:      commands,
 		configuration: configuration,
+		usage:         usage,
 	}
 }
 func (a App) Run() error {
@@ -27,12 +34,21 @@ func (a App) Run() error {
 func (a App) getCommand(commandString string) (commands.Command, error) {
 	command, ok := a.commands[commandString]
 	if !ok {
-		// a.usage.Print()
+		a.usage.Print()
 		return nil, fmt.Errorf("unknown command: %s", commandString)
 	}
 	return command, nil
 }
 
 func (a App) execute() error {
+	command, err := a.getCommand(a.configuration.Command)
+	if err != nil {
+		return err
+	}
+
+	if a.configuration.ShowCommandHelp {
+		a.usage.PrintCommandUsage(a.configuration.Command, command.Usage())
+		return nil
+	}
 	return &errors.NotImplementedError{}
 }

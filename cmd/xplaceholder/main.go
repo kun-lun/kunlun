@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
 	"os"
 
@@ -31,8 +30,8 @@ func main() {
 	if globals.NoConfirm {
 		logger.NoConfirm()
 	}
-	stateJSON, _ := json.Marshal(globals)
-	stderrLogger.Println(string(stateJSON))
+	// stateJSON, _ := json.Marshal(globals)
+	// stderrLogger.Println(string(stateJSON))
 
 	// File IO
 	fs := afero.NewOsFs()
@@ -50,9 +49,10 @@ func main() {
 
 	// // Utilities
 	// envIDGenerator := helpers.NewEnvIDGenerator(rand.Reader)
+	usage := commands.NewUsage(logger)
 
 	commandSet := commands.CommandSet{}
-	app := application.New(commandSet, appConfig)
+	app := application.New(commandSet, appConfig, usage)
 
 	err = app.Run()
 	if err != nil {
