@@ -23,10 +23,10 @@
 [[projects]]
   branch = "draft"
   digest = "1:69562d48f392fbb667cc83574264dbc41d73af20105b54b491b8b5fa9e4ef7ac"
-  name = "github.com/xplaceholder/infra-producer"
+  name = "github.com/xplaceholder/common"
   packages = ["fileio"]
   pruneopts = "UT"
-  revision = "1345d2ce1c3fc9c31cc54965eb83bde0e8c3a5b8"
+  revision = "a3ed5af57ecb964bb4e21eee76a2becd5f251401"
 
 [[projects]]
   digest = "1:8029e9743749d4be5bc9f7d42ea1659471767860f0cdc34d37c3111bd308a295"
@@ -48,8 +48,7 @@
   analyzer-version = 1
   input-imports = [
     "github.com/jessevdk/go-flags",
-    "github.com/spf13/afero",
-    "github.com/xplaceholder/infra-producer/fileio",
+    "github.com/xplaceholder/common/fileio",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

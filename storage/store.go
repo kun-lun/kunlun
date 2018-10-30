@@ -1,6 +1,6 @@
 package storage
 
-import "github.com/xplaceholder/infra-producer/fileio"
+import "github.com/xplaceholder/common/fileio"
 
 const (
 	STATE_SCHEMA = 14

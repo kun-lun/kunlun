@@ -30,12 +30,8 @@
   version = "1.4.0"
 
 [[constraint]]
-  name = "github.com/spf13/afero"
-  version = "1.1.2"
-
-[[constraint]]
   branch = "draft"
-  name = "github.com/xplaceholder/infra-producer"
+  name = "github.com/xplaceholder/common"
 
 [prune]
   go-tests = true

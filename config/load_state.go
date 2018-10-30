@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 
 	flags "github.com/jessevdk/go-flags"
-	"github.com/xplaceholder/infra-producer/fileio"
+	"github.com/xplaceholder/common/fileio"
 	"github.com/xplaceholder/xplaceholder/application"
 )
 
@@ -57,4 +57,45 @@ func (c Config) Bootstrap(globalFlags GlobalFlags, remainingArgs []string, argsL
 	return application.Configuration{
 		Command: "help",
 	}, nil
+
+	var command string
+	if len(remainingArgs) > 0 {
+		command = remainingArgs[0]
+	}
+
+	if len(remainingArgs) == 0 {
+		return application.Configuration{
+			Command: "help",
+		}, nil
+	}
+
+	state, err := c.stateBootstrap.GetState(globalFlags.StateDir)
+	if err != nil {
+		return application.Configuration{}, err
+	}
+
+	return application.Configuration{
+		Global: application.GlobalConfiguration{
+			Debug:    globalFlags.Debug,
+			StateDir: globalFlags.StateDir,
+			Name:     globalFlags.EnvID,
+		},
+		State:                state,
+		Command:              command,
+		SubcommandFlags:      remainingArgs[1:],
+		ShowCommandHelp:      false,
+		CommandModifiesState: modifiesState(command),
+	}, nil
+}
+
+func modifiesState(command string) bool {
+	_, ok := map[string]struct{}{
+		"digest":     {}, // detect the project type and generate the draft manifests.
+		"plan-lift":  {}, // parse the draft manifests and generate the infrastructure manifests. (now in terraform)
+		"lift":       {}, // run the infra manifests. prepare the environment.
+		"plan-shift": {}, // generate the deployment scripts, (now in ansible)
+		"shift":      {}, // run the deployment scripts
+		"destroy":    {}, // destroy the environment we just setup.
+	}[command]
+	return ok
 }
