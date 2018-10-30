@@ -25,8 +25,11 @@
 [[projects]]
   branch = "draft"
   name = "github.com/xplaceholder/common"
-  packages = ["fileio"]
-  revision = "a3ed5af57ecb964bb4e21eee76a2becd5f251401"
+  packages = [
+    "fileio",
+    "storage"
+  ]
+  revision = "a613fdb1ef6e47f6c6a64f263da28a92b8be225f"
 
 [[projects]]
   name = "golang.org/x/text"
@@ -44,6 +47,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "1c078fafb4834be797aec0fbcf8b45b466143bac48040fd5153cac25aa69a9bc"
+  inputs-digest = "ac34e8d87f7377289969b092d9555353f14b676023745015abffae206b565826"
   solver-name = "gps-cdcl"
   solver-version = 1

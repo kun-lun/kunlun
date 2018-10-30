@@ -6,8 +6,8 @@ import (
 	"os"
 
 	"github.com/spf13/afero"
+	"github.com/xplaceholder/common/storage"
 	"github.com/xplaceholder/xplaceholder/config"
-	"github.com/xplaceholder/xplaceholder/storage"
 
 	"github.com/xplaceholder/xplaceholder/application"
 )

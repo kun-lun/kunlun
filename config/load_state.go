@@ -6,8 +6,8 @@ import (
 
 	flags "github.com/jessevdk/go-flags"
 	"github.com/xplaceholder/common/fileio"
+	"github.com/xplaceholder/common/storage"
 	"github.com/xplaceholder/xplaceholder/application"
-	"github.com/xplaceholder/xplaceholder/storage"
 )
 
 type logger interface {
