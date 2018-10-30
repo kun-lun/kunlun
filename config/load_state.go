@@ -1,8 +1,12 @@
 package config
 
 import (
+	"os"
+	"path/filepath"
+
 	flags "github.com/jessevdk/go-flags"
 	"github.com/xplaceholder/infra-producer/fileio"
+	"github.com/xplaceholder/xplaceholder/application"
 )
 
 type logger interface {
@@ -18,14 +22,16 @@ type fs interface {
 
 func NewConfig(logger logger, fs fs) Config {
 	return Config{
-		logger: logger,
-		fs:     fs,
+		stateBootstrap: bootstrap,
+		logger:         logger,
+		fs:             fs,
 	}
 }
 
 type Config struct {
-	logger logger
-	fs     fs
+	stateBootstrap StateBootstrap
+	logger         logger
+	fs             fs
 }
 
 func ParseArgs(args []string) (GlobalFlags, []string, error) {
@@ -35,5 +41,20 @@ func ParseArgs(args []string) (GlobalFlags, []string, error) {
 	if err != nil {
 		return GlobalFlags{}, remainingArgs, err
 	}
+
+	if !filepath.IsAbs(globals.StateDir) {
+		workingDir, err := os.Getwd()
+		if err != nil {
+			return GlobalFlags{}, remainingArgs, err
+		}
+		globals.StateDir = filepath.Join(workingDir, globals.StateDir)
+	}
+
 	return globals, remainingArgs, nil
+}
+
+func (c Config) Bootstrap(globalFlags GlobalFlags, remainingArgs []string, argsLen int) (application.Configuration, error) {
+	return application.Configuration{
+		Command: "help",
+	}, nil
 }

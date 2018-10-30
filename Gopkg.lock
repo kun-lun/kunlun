@@ -2,14 +2,54 @@
 
 
 [[projects]]
+  digest = "1:a2cff208d4759f6ba1b1cd228587b0a1869f95f22542ec9cd17fff64430113c7"
   name = "github.com/jessevdk/go-flags"
   packages = ["."]
+  pruneopts = "UT"
   revision = "c6ca198ec95c841fdb89fc0de7496fed11ab854e"
   version = "v1.4.0"
+
+[[projects]]
+  digest = "1:6a4a11ba764a56d2758899ec6f3848d24698d48442ebce85ee7a3f63284526cd"
+  name = "github.com/spf13/afero"
+  packages = [
+    ".",
+    "mem",
+  ]
+  pruneopts = "UT"
+  revision = "d40851caa0d747393da1ffb28f7f9d8b4eeffebd"
+  version = "v1.1.2"
+
+[[projects]]
+  branch = "draft"
+  digest = "1:69562d48f392fbb667cc83574264dbc41d73af20105b54b491b8b5fa9e4ef7ac"
+  name = "github.com/xplaceholder/infra-producer"
+  packages = ["fileio"]
+  pruneopts = "UT"
+  revision = "1345d2ce1c3fc9c31cc54965eb83bde0e8c3a5b8"
+
+[[projects]]
+  digest = "1:8029e9743749d4be5bc9f7d42ea1659471767860f0cdc34d37c3111bd308a295"
+  name = "golang.org/x/text"
+  packages = [
+    "internal/gen",
+    "internal/triegen",
+    "internal/ucd",
+    "transform",
+    "unicode/cldr",
+    "unicode/norm",
+  ]
+  pruneopts = "UT"
+  revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
+  version = "v0.3.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "5c5b015b0ff5f566e88f76c8b0a90a10f655d765ab1612171277eae3de01b096"
+  input-imports = [
+    "github.com/jessevdk/go-flags",
+    "github.com/spf13/afero",
+    "github.com/xplaceholder/infra-producer/fileio",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
