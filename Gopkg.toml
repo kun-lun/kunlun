@@ -23,7 +23,9 @@
 #   non-go = false
 #   go-tests = true
 #   unused-packages = true
-
+required=[
+  "github.com/xplaceholder/executor/commands"
+]
 
 [[constraint]]
   name = "github.com/jessevdk/go-flags"

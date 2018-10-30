@@ -26,10 +26,17 @@
   branch = "draft"
   name = "github.com/xplaceholder/common"
   packages = [
+    "errors",
     "fileio",
     "storage"
   ]
-  revision = "a613fdb1ef6e47f6c6a64f263da28a92b8be225f"
+  revision = "3fd0e3245f172d561c86d2e44d98d9d9e4d37b9a"
+
+[[projects]]
+  branch = "draft"
+  name = "github.com/xplaceholder/executor"
+  packages = ["commands"]
+  revision = "10e2624c2bd7cf5694433064bfb647ca56d358d2"
 
 [[projects]]
   name = "golang.org/x/text"
@@ -47,6 +54,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ac34e8d87f7377289969b092d9555353f14b676023745015abffae206b565826"
+  inputs-digest = "a9258407a8ffe37844a36998abdbf4b122a3c0a8664975faa5582186c35c6bb0"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -7,6 +7,7 @@ import (
 
 	"github.com/spf13/afero"
 	"github.com/xplaceholder/common/storage"
+	"github.com/xplaceholder/executor/commands"
 	"github.com/xplaceholder/xplaceholder/config"
 
 	"github.com/xplaceholder/xplaceholder/application"
@@ -42,7 +43,7 @@ func main() {
 	_ = storage.NewStore(globals.StateDir, afs)
 	newConfig := config.NewConfig(stateBootstrap, stderrLogger, afs)
 
-	_, err = newConfig.Bootstrap(globals, remainingArgs, len(os.Args))
+	appConfig, err := newConfig.Bootstrap(globals, remainingArgs, len(os.Args))
 	if err != nil {
 		log.Fatalf("\n\n%s\n", err)
 	}
@@ -50,4 +51,11 @@ func main() {
 	// // Utilities
 	// envIDGenerator := helpers.NewEnvIDGenerator(rand.Reader)
 
+	commandSet := commands.CommandSet{}
+	app := application.New(commandSet, appConfig)
+
+	err = app.Run()
+	if err != nil {
+		log.Fatalf("\n\n%s\n", err)
+	}
 }
