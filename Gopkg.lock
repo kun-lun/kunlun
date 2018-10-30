@@ -2,80 +2,58 @@
 
 
 [[projects]]
-  branch = "draft"
-  name = "github.com/xplaceholder/artifacts"
+  name = "github.com/jessevdk/go-flags"
+  packages = ["."]
+  revision = "c6ca198ec95c841fdb89fc0de7496fed11ab854e"
+  version = "v1.4.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/nu7hatch/gouuid"
+  packages = ["."]
+  revision = "179d4d0c4d8d407a32af483c2354df1d2c91e6c3"
+
+[[projects]]
+  name = "github.com/spf13/afero"
   packages = [
-    "pkg/apis",
-    "pkg/models"
+    ".",
+    "mem"
   ]
-  revision = "1ffc54bfa7f5d8dfa4ee724f2b7ebc784e86af44"
+  revision = "d40851caa0d747393da1ffb28f7f9d8b4eeffebd"
+  version = "v1.1.2"
 
 [[projects]]
   branch = "draft"
-  name = "github.com/xplaceholder/ashandler"
+  name = "github.com/xplaceholder/common"
   packages = [
-    "generator",
-    "pkg/apis"
+    "errors",
+    "fileio",
+    "storage"
   ]
-  revision = "661f68f12482692e7b9732356ad9371140d2d870"
-
-[[projects]]
-  branch = "draft"
-  name = "github.com/xplaceholder/deployment-producer"
-  packages = ["pkg/apis"]
-  revision = "e47c5f2051bbf7962a688a8a57ed29ad5804fb25"
-
-[[projects]]
-  branch = "draft"
-  name = "github.com/xplaceholder/digester"
-  packages = ["pkg/apis"]
-  revision = "b2112f02f627425791b352d1b9cea9efa741bf86"
+  revision = "3fd0e3245f172d561c86d2e44d98d9d9e4d37b9a"
 
 [[projects]]
   branch = "draft"
   name = "github.com/xplaceholder/executor"
-  packages = ["pkg/apis"]
-  revision = "7b16c35177ae4af66f445ee105fac5a0dcc6d776"
+  packages = ["commands"]
+  revision = "10e2624c2bd7cf5694433064bfb647ca56d358d2"
 
 [[projects]]
-  branch = "draft"
-  name = "github.com/xplaceholder/infra-producer"
-  packages = ["pkg/apis"]
-  revision = "3559a3435ad1cc4b38e86269b5b4acab3cd91d1b"
-
-[[projects]]
-  branch = "draft"
-  name = "github.com/xplaceholder/migration-producer"
-  packages = ["pkg/apis"]
-  revision = "6d111942e386025965c6cf4be00438bc077c86b9"
-
-[[projects]]
-  branch = "draft"
-  name = "github.com/xplaceholder/report-producer"
-  packages = ["pkg/apis"]
-  revision = "a7ec77fa62bbf29e2622178171f495136e7d2718"
-
-[[projects]]
-  branch = "draft"
-  name = "github.com/xplaceholder/test-infra"
-  packages = ["pkg/apis"]
-  revision = "f2cbb3bfa6499938397045c3a9ba4e7ab8d27169"
-
-[[projects]]
-  branch = "draft"
-  name = "github.com/xplaceholder/tfhandler"
-  packages = ["pkg/apis"]
-  revision = "a06ef0f9beccdf36d633870966e59528a5238937"
-
-[[projects]]
-  branch = "draft"
-  name = "github.com/xplaceholder/verification-producer"
-  packages = ["pkg/apis"]
-  revision = "405272e64acb48f3f87c1416c2320d11c21829f4"
+  name = "golang.org/x/text"
+  packages = [
+    "internal/gen",
+    "internal/triegen",
+    "internal/ucd",
+    "transform",
+    "unicode/cldr",
+    "unicode/norm"
+  ]
+  revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
+  version = "v0.3.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "bd6964ef9d1ce0756532149793a5027a85279b8e896bf9d4a84badcbe6427ed7"
+  inputs-digest = "a9258407a8ffe37844a36998abdbf4b122a3c0a8664975faa5582186c35c6bb0"
   solver-name = "gps-cdcl"
   solver-version = 1
