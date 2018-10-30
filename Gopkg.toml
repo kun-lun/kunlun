@@ -1,58 +1,44 @@
-required = [
-    "github.com/xplaceholder/artifacts/pkg/apis",
-    "github.com/xplaceholder/digester/pkg/apis",
-    "github.com/xplaceholder/ashandler/pkg/apis",
-    "github.com/xplaceholder/ashandler/generator",
-    "github.com/xplaceholder/tfhandler/pkg/apis",
-    "github.com/xplaceholder/executor/pkg/apis",
-    "github.com/xplaceholder/infra-producer/pkg/apis",
-    "github.com/xplaceholder/migration-producer/pkg/apis",
-    "github.com/xplaceholder/deployment-producer/pkg/apis",
-    "github.com/xplaceholder/verification-producer/pkg/apis",
-    "github.com/xplaceholder/report-producer/pkg/apis",
-    "github.com/xplaceholder/test-infra/pkg/apis"
+# Gopkg.toml example
+#
+# Refer to https://golang.github.io/dep/docs/Gopkg.toml.html
+# for detailed Gopkg.toml documentation.
+#
+# required = ["github.com/user/thing/cmd/thing"]
+# ignored = ["github.com/user/project/pkgX", "bitbucket.org/user/project/pkgA/pkgY"]
+#
+# [[constraint]]
+#   name = "github.com/user/project"
+#   version = "1.0.0"
+#
+# [[constraint]]
+#   name = "github.com/user/project2"
+#   branch = "dev"
+#   source = "github.com/myfork/project2"
+#
+# [[override]]
+#   name = "github.com/x/y"
+#   version = "2.4.0"
+#
+# [prune]
+#   non-go = false
+#   go-tests = true
+#   unused-packages = true
+required=[
+  "github.com/xplaceholder/executor/commands"
 ]
 
 [[constraint]]
-    name = "github.com/xplaceholder/artifacts"
-    branch = "draft"
+  name = "github.com/jessevdk/go-flags"
+  version = "1.4.0"
 
 [[constraint]]
-    name = "github.com/xplaceholder/digester"
-    branch = "draft"
+  branch = "draft"
+  name = "github.com/xplaceholder/common"
+
+[prune]
+  go-tests = true
+  unused-packages = true
 
 [[constraint]]
-    name = "github.com/xplaceholder/ashandler"
-    branch = "draft"
-
-[[constraint]]
-    name = "github.com/xplaceholder/tfhandler"
-    branch = "draft"
-
-[[constraint]]
-    name = "github.com/xplaceholder/executor"
-    branch = "draft"
-
-[[constraint]]
-    name = "github.com/xplaceholder/infra-producer"
-    branch = "draft"
-
-[[constraint]]
-    name = "github.com/xplaceholder/migration-producer"
-    branch = "draft"
-
-[[constraint]]
-    name = "github.com/xplaceholder/deployment-producer"
-    branch = "draft"
-
-[[constraint]]
-    name = "github.com/xplaceholder/verification-producer"
-    branch = "draft"
-
-[[constraint]]
-    name = "github.com/xplaceholder/report-producer"
-    branch = "draft"
-
-[[constraint]]
-    name = "github.com/xplaceholder/test-infra"
-    branch = "draft"
+  branch = "master"
+  name = "github.com/nu7hatch/gouuid"
