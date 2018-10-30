@@ -33,9 +33,13 @@ func main() {
 	stateJSON, _ := json.Marshal(globals)
 	stderrLogger.Println(string(stateJSON))
 
-	// // File IO
+	// File IO
 	fs := afero.NewOsFs()
 	afs := &afero.Afero{Fs: fs}
+
+	// Configuration
+
+	_ = storage.NewStore(globals.StateDir, afs)
 	newConfig := config.NewConfig(stateBootstrap, stderrLogger, afs)
 
 	_, err = newConfig.Bootstrap(globals, remainingArgs, len(os.Args))
