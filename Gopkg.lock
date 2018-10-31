@@ -44,14 +44,14 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:197d065ecffaaab0dc051ab57c95ecd9d38768cfb0b86d9130a041be1534425b"
+  digest = "1:c5f25a1f9d82da57402b1e2fe954770b7ec96e659a34eeae1ba7436531720624"
   name = "github.com/xplaceholder/executor"
   packages = [
     "commands",
     "executor",
   ]
   pruneopts = "UT"
-  revision = "5ed71331a87189a01db915bcf7f2300d4bb6ae14"
+  revision = "925355502e54b51920901d6f70f041141c5a5528"
 
 [[projects]]
   digest = "1:8029e9743749d4be5bc9f7d42ea1659471767860f0cdc34d37c3111bd308a295"
