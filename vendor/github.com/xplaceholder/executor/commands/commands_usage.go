@@ -19,3 +19,11 @@ func (PlanShift) Usage() string {
 func (Shift) Usage() string {
 	return "Help About Shift."
 }
+
+func (Promote) Usage() string {
+	return "Help About Promote"
+}
+
+func (Usage) Usage() string {
+	return "Help About Usage."
+}

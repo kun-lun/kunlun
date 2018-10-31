@@ -5,9 +5,9 @@ import (
 	"path/filepath"
 
 	flags "github.com/jessevdk/go-flags"
+	"github.com/xplaceholder/common/configuration"
 	"github.com/xplaceholder/common/fileio"
 	"github.com/xplaceholder/common/storage"
-	"github.com/xplaceholder/xplaceholder/application"
 )
 
 type logger interface {
@@ -54,29 +54,59 @@ func ParseArgs(args []string) (GlobalFlags, []string, error) {
 	return globals, remainingArgs, nil
 }
 
-func (c Config) Bootstrap(globalFlags GlobalFlags, remainingArgs []string, argsLen int) (application.Configuration, error) {
-	return application.Configuration{
-		Command: "help",
-	}, nil
+func (c Config) Bootstrap(globalFlags GlobalFlags, remainingArgs []string, argsLen int) (configuration.Configuration, error) {
+	if argsLen == 1 { // if run kid.
+		return configuration.Configuration{
+			Command: "help",
+		}, nil
+	}
 
 	var command string
 	if len(remainingArgs) > 0 {
 		command = remainingArgs[0]
 	}
 
+	if globalFlags.Version || command == "version" {
+		command = "version"
+		return configuration.Configuration{
+			ShowCommandHelp: globalFlags.Help,
+			Command:         command,
+		}, nil
+	}
+
 	if len(remainingArgs) == 0 {
-		return application.Configuration{
+		return configuration.Configuration{
 			Command: "help",
+		}, nil
+	}
+
+	if len(remainingArgs) == 1 && command == "help" {
+		return configuration.Configuration{
+			Command: command,
+		}, nil
+	}
+
+	if command == "help" {
+		return configuration.Configuration{
+			ShowCommandHelp: true,
+			Command:         remainingArgs[1],
+		}, nil
+	}
+
+	if globalFlags.Help {
+		return configuration.Configuration{
+			ShowCommandHelp: true,
+			Command:         command,
 		}, nil
 	}
 
 	state, err := c.stateBootstrap.GetState(globalFlags.StateDir)
 	if err != nil {
-		return application.Configuration{}, err
+		return configuration.Configuration{}, err
 	}
 
-	return application.Configuration{
-		Global: application.GlobalConfiguration{
+	return configuration.Configuration{
+		Global: configuration.GlobalConfiguration{
 			Debug:    globalFlags.Debug,
 			StateDir: globalFlags.StateDir,
 			Name:     globalFlags.EnvID,

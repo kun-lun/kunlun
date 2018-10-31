@@ -5,21 +5,20 @@ import (
 	"os"
 
 	"github.com/spf13/afero"
+	clogger "github.com/xplaceholder/common/logger"
 	"github.com/xplaceholder/common/storage"
 	"github.com/xplaceholder/executor/commands"
+	"github.com/xplaceholder/executor/executor"
 	"github.com/xplaceholder/xplaceholder/config"
-
-	"github.com/xplaceholder/xplaceholder/application"
 )
 
 var Version = "dev"
 
 func main() {
-
 	log.SetFlags(0)
 
-	logger := application.NewLogger(os.Stdout, os.Stdin)
-	stderrLogger := application.NewLogger(os.Stderr, os.Stdin)
+	logger := clogger.NewLogger(os.Stdout, os.Stdin)
+	stderrLogger := clogger.NewLogger(os.Stderr, os.Stdin)
 	stateBootstrap := storage.NewStateBootstrap(stderrLogger, Version)
 
 	globals, remainingArgs, err := config.ParseArgs(os.Args)
@@ -51,8 +50,7 @@ func main() {
 	// envIDGenerator := helpers.NewEnvIDGenerator(rand.Reader)
 	usage := commands.NewUsage(logger)
 
-	commandSet := commands.CommandSet{}
-	app := application.New(commandSet, appConfig, usage)
+	app := executor.New(appConfig, usage, logger)
 
 	err = app.Run()
 	if err != nil {
