@@ -44,14 +44,14 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:4bc6479c8e15b234c49bb6b5872c4cf2dc30a260eb4f3e9f362099a92a35368c"
+  digest = "1:197d065ecffaaab0dc051ab57c95ecd9d38768cfb0b86d9130a041be1534425b"
   name = "github.com/xplaceholder/executor"
   packages = [
     "commands",
     "executor",
   ]
   pruneopts = "UT"
-  revision = "c6e46448d774c7b03df1770a00bddd10f8c4998e"
+  revision = "5ed71331a87189a01db915bcf7f2300d4bb6ae14"
 
 [[projects]]
   digest = "1:8029e9743749d4be5bc9f7d42ea1659471767860f0cdc34d37c3111bd308a295"
@@ -75,6 +75,7 @@
     "github.com/jessevdk/go-flags",
     "github.com/spf13/afero",
     "github.com/xplaceholder/common/configuration",
+    "github.com/xplaceholder/common/errors",
     "github.com/xplaceholder/common/fileio",
     "github.com/xplaceholder/common/logger",
     "github.com/xplaceholder/common/storage",

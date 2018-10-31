@@ -15,7 +15,6 @@ import (
 var Version = "dev"
 
 func main() {
-
 	log.SetFlags(0)
 
 	logger := clogger.NewLogger(os.Stdout, os.Stdin)

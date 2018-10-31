@@ -3,7 +3,6 @@ package config
 import (
 	"os"
 	"path/filepath"
-	"strings"
 
 	flags "github.com/jessevdk/go-flags"
 	"github.com/xplaceholder/common/configuration"
@@ -56,10 +55,7 @@ func ParseArgs(args []string) (GlobalFlags, []string, error) {
 }
 
 func (c Config) Bootstrap(globalFlags GlobalFlags, remainingArgs []string, argsLen int) (configuration.Configuration, error) {
-	println("##############")
-	println(strings.Join(remainingArgs, ","))
-	println("##############")
-	if argsLen == 1 {
+	if argsLen == 1 { // if run kid.
 		return configuration.Configuration{
 			Command: "help",
 		}, nil
@@ -81,6 +77,26 @@ func (c Config) Bootstrap(globalFlags GlobalFlags, remainingArgs []string, argsL
 	if len(remainingArgs) == 0 {
 		return configuration.Configuration{
 			Command: "help",
+		}, nil
+	}
+
+	if len(remainingArgs) == 1 && command == "help" {
+		return configuration.Configuration{
+			Command: command,
+		}, nil
+	}
+
+	if command == "help" {
+		return configuration.Configuration{
+			ShowCommandHelp: true,
+			Command:         remainingArgs[1],
+		}, nil
+	}
+
+	if globalFlags.Help {
+		return configuration.Configuration{
+			ShowCommandHelp: true,
+			Command:         command,
 		}, nil
 	}
 
