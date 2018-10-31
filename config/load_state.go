@@ -3,11 +3,12 @@ package config
 import (
 	"os"
 	"path/filepath"
+	"strings"
 
 	flags "github.com/jessevdk/go-flags"
+	"github.com/xplaceholder/common/configuration"
 	"github.com/xplaceholder/common/fileio"
 	"github.com/xplaceholder/common/storage"
-	"github.com/xplaceholder/xplaceholder/application"
 )
 
 type logger interface {
@@ -54,29 +55,42 @@ func ParseArgs(args []string) (GlobalFlags, []string, error) {
 	return globals, remainingArgs, nil
 }
 
-func (c Config) Bootstrap(globalFlags GlobalFlags, remainingArgs []string, argsLen int) (application.Configuration, error) {
-	return application.Configuration{
-		Command: "help",
-	}, nil
+func (c Config) Bootstrap(globalFlags GlobalFlags, remainingArgs []string, argsLen int) (configuration.Configuration, error) {
+	println("##############")
+	println(strings.Join(remainingArgs, ","))
+	println("##############")
+	if argsLen == 1 {
+		return configuration.Configuration{
+			Command: "help",
+		}, nil
+	}
 
 	var command string
 	if len(remainingArgs) > 0 {
 		command = remainingArgs[0]
 	}
 
+	if globalFlags.Version || command == "version" {
+		command = "version"
+		return configuration.Configuration{
+			ShowCommandHelp: globalFlags.Help,
+			Command:         command,
+		}, nil
+	}
+
 	if len(remainingArgs) == 0 {
-		return application.Configuration{
+		return configuration.Configuration{
 			Command: "help",
 		}, nil
 	}
 
 	state, err := c.stateBootstrap.GetState(globalFlags.StateDir)
 	if err != nil {
-		return application.Configuration{}, err
+		return configuration.Configuration{}, err
 	}
 
-	return application.Configuration{
-		Global: application.GlobalConfiguration{
+	return configuration.Configuration{
+		Global: configuration.GlobalConfiguration{
 			Debug:    globalFlags.Debug,
 			StateDir: globalFlags.StateDir,
 			Name:     globalFlags.EnvID,

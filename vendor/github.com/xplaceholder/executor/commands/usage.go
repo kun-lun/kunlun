@@ -4,18 +4,17 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/xplaceholder/common/errors"
 	"github.com/xplaceholder/common/storage"
 )
 
 const (
 	UsageHeader = `
 Usage:
-xplaceholder [GLOBAL OPTIONS] %s [OPTIONS]
+  bbl [GLOBAL OPTIONS] %s [OPTIONS]
 
 Global Options:
-  --help       [-h]        Prints usage. Use "xplaceholder [command] --help" for more information about a command
-  --state-dir  [-s]        Directory containing the xplaceholder state                                            env:"KID_STATE_DIRECTORY"
+  --help       [-h]        Prints usage. Use "kid [command] --help" for more information about a command
+  --state-dir  [-s]        Directory containing the kid state                                            env:"KID_STATE_DIRECTORY"
   --debug      [-d]        Prints debugging output                                                       env:"KID_DEBUG"
   --version    [-v]        Prints version
   --no-confirm [-n]        No confirm
@@ -25,6 +24,7 @@ Global Options:
 [%s command options]
   %s`
 )
+
 const GlobalUsage = `
 `
 
@@ -39,7 +39,7 @@ func NewUsage(logger logger) Usage {
 }
 
 func (u Usage) CheckFastFails(subcommandFlags []string, state storage.State) error {
-	return &errors.NotImplementedError{}
+	return nil
 }
 
 func (u Usage) Execute(subcommandFlags []string, state storage.State) error {
