@@ -1,6 +1,6 @@
-package application
+package configuration
 
-import "github.com/xplaceholder/common/storage"
+import "github.com/kun-lun/common/storage"
 
 type GlobalConfiguration struct {
 	StateDir string

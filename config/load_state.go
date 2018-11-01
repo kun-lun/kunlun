@@ -5,9 +5,9 @@ import (
 	"path/filepath"
 
 	flags "github.com/jessevdk/go-flags"
-	"github.com/xplaceholder/common/configuration"
-	"github.com/xplaceholder/common/fileio"
-	"github.com/xplaceholder/common/storage"
+	"github.com/kun-lun/common/configuration"
+	"github.com/kun-lun/common/fileio"
+	"github.com/kun-lun/common/storage"
 )
 
 type logger interface {

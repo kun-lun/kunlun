@@ -10,6 +10,31 @@
   version = "v1.4.0"
 
 [[projects]]
+  branch = "draft"
+  digest = "1:33c7b5c4365ae90a88469d2007014506504a067b3a1e65985fa4ae2663017d1d"
+  name = "github.com/kun-lun/common"
+  packages = [
+    "configuration",
+    "errors",
+    "fileio",
+    "logger",
+    "storage",
+  ]
+  pruneopts = "UT"
+  revision = "5373108824cc1fac15ac0274e27ea2d25daf7d16"
+
+[[projects]]
+  branch = "draft"
+  digest = "1:b221f8edafdc04fc2216673418e2dbc609139e08d0c0f54be656df267adc90ac"
+  name = "github.com/kun-lun/executor"
+  packages = [
+    "commands",
+    "executor",
+  ]
+  pruneopts = "UT"
+  revision = "e6090c823e585f8eb417b4f70c873bbaa503d1ae"
+
+[[projects]]
   branch = "master"
   digest = "1:0e1e5f960c58fdc677212fcc70e55042a0084d367623e51afbdb568963832f5d"
   name = "github.com/nu7hatch/gouuid"
@@ -27,31 +52,6 @@
   pruneopts = "UT"
   revision = "d40851caa0d747393da1ffb28f7f9d8b4eeffebd"
   version = "v1.1.2"
-
-[[projects]]
-  branch = "draft"
-  digest = "1:7bd57a90a91e7b7ac23302a169ec9c9199ef42028df0d259c0bf20884d520ff1"
-  name = "github.com/xplaceholder/common"
-  packages = [
-    "configuration",
-    "errors",
-    "fileio",
-    "logger",
-    "storage",
-  ]
-  pruneopts = "UT"
-  revision = "4eba06af8283c2169ddaa9529bd271080a1ead5c"
-
-[[projects]]
-  branch = "draft"
-  digest = "1:c5f25a1f9d82da57402b1e2fe954770b7ec96e659a34eeae1ba7436531720624"
-  name = "github.com/xplaceholder/executor"
-  packages = [
-    "commands",
-    "executor",
-  ]
-  pruneopts = "UT"
-  revision = "925355502e54b51920901d6f70f041141c5a5528"
 
 [[projects]]
   digest = "1:8029e9743749d4be5bc9f7d42ea1659471767860f0cdc34d37c3111bd308a295"
@@ -73,14 +73,13 @@
   analyzer-version = 1
   input-imports = [
     "github.com/jessevdk/go-flags",
+    "github.com/kun-lun/common/configuration",
+    "github.com/kun-lun/common/fileio",
+    "github.com/kun-lun/common/logger",
+    "github.com/kun-lun/common/storage",
+    "github.com/kun-lun/executor/commands",
+    "github.com/kun-lun/executor/executor",
     "github.com/spf13/afero",
-    "github.com/xplaceholder/common/configuration",
-    "github.com/xplaceholder/common/errors",
-    "github.com/xplaceholder/common/fileio",
-    "github.com/xplaceholder/common/logger",
-    "github.com/xplaceholder/common/storage",
-    "github.com/xplaceholder/executor/commands",
-    "github.com/xplaceholder/executor/executor",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

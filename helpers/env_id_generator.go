@@ -25,7 +25,7 @@ func (e EnvIDGenerator) Generate() (string, error) {
 	}
 	timestamp := time.Now().UTC().Format("2006-01-02t15-04z")
 
-	return fmt.Sprintf("xplaceholder-env-%s-%s", lake, timestamp), nil
+	return fmt.Sprintf("kun-lun-env-%s-%s", lake, timestamp), nil
 }
 
 func (e EnvIDGenerator) randomLake() (string, error) {
