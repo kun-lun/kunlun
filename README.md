@@ -1,6 +1,6 @@
 # kunlun
 
-[![Build Status](https://xplaceholderci.gugagaga.fun/buildStatus/icon?job=xplaceholder/xplaceholder/draft)](https://xplaceholderci.gugagaga.fun/job/xplaceholder/job/xplaceholder/job/draft/)
+[![Build Status](https://xplaceholderci.gugagaga.fun/buildStatus/icon?job=kun-lun/xplaceholder/draft)](https://xplaceholderci.gugagaga.fun/job/kun-lun/job/xplaceholder/job/draft/)
 
 [![GoDoc](https://godoc.org/github.com/xplaceholder/xplaceholder?status.svg)](https://godoc.org/github.com/xplaceholder/xplaceholder)
 
