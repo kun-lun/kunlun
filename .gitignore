@@ -11,4 +11,5 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-/cmd/xplaceholder/xplaceholder
+/cmd/kl/kl
+/cmd/kl/kl-state.json

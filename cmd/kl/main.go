@@ -38,8 +38,9 @@ func main() {
 
 	// Configuration
 
-	_ = storage.NewStore(globals.StateDir, afs)
-	newConfig := config.NewConfig(stateBootstrap, stderrLogger, afs)
+	stateStore := storage.NewStore(globals.StateDir, afs)
+	stateMerger := config.NewMerger(afs)
+	newConfig := config.NewConfig(stateBootstrap, stateMerger, stderrLogger, afs)
 
 	appConfig, err := newConfig.Bootstrap(globals, remainingArgs, len(os.Args))
 	if err != nil {
@@ -50,7 +51,7 @@ func main() {
 	// envIDGenerator := helpers.NewEnvIDGenerator(rand.Reader)
 	usage := commands.NewUsage(logger)
 
-	app := executor.New(appConfig, usage, logger)
+	app := executor.New(appConfig, usage, logger, stateStore)
 
 	err = app.Run()
 	if err != nil {

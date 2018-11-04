@@ -14,6 +14,10 @@ type logger interface {
 	Println(string)
 }
 
+type merger interface {
+	MergeGlobalFlagsToState(globalflags GlobalFlags, state storage.State) (storage.State, error)
+}
+
 type fs interface {
 	fileio.Stater
 	fileio.TempFiler
@@ -21,9 +25,10 @@ type fs interface {
 	fileio.FileWriter
 }
 
-func NewConfig(bootstrap storage.StateBootstrap, logger logger, fs fs) Config {
+func NewConfig(bootstrap storage.StateBootstrap, merger merger, logger logger, fs fs) Config {
 	return Config{
 		stateBootstrap: bootstrap,
+		merger:         merger,
 		logger:         logger,
 		fs:             fs,
 	}
@@ -31,6 +36,7 @@ func NewConfig(bootstrap storage.StateBootstrap, logger logger, fs fs) Config {
 
 type Config struct {
 	stateBootstrap storage.StateBootstrap
+	merger         merger
 	logger         logger
 	fs             fs
 }
@@ -101,6 +107,11 @@ func (c Config) Bootstrap(globalFlags GlobalFlags, remainingArgs []string, argsL
 	}
 
 	state, err := c.stateBootstrap.GetState(globalFlags.StateDir)
+	if err != nil {
+		return configuration.Configuration{}, err
+	}
+
+	state, err = c.merger.MergeGlobalFlagsToState(globalFlags, state)
 	if err != nil {
 		return configuration.Configuration{}, err
 	}
