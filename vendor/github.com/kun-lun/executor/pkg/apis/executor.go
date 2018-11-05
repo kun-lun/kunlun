@@ -16,19 +16,19 @@ type usage interface {
 	PrintCommandUsage(command, message string)
 }
 
-type App struct {
+type Executor struct {
 	commands      commands.CommandSet
 	configuration configuration.Configuration
 	usage         usage
 	logger        logger.Logger
 }
 
-func New(
+func NewExecutor(
 	configuration configuration.Configuration,
 	usage usage,
 	logger *logger.Logger,
 	stateStore storage.Store,
-) App {
+) Executor {
 
 	envIDGenerator := helpers.NewEnvIDManager(rand.Reader)
 
@@ -40,19 +40,19 @@ func New(
 	commandSet["plan_deployment"] = commands.NewPlanDeployment(stateStore)
 	commandSet["apply_deployment"] = commands.NewApplyDeployment(stateStore)
 	commandSet["promote"] = commands.NewPromote(stateStore)
-	return App{
+	return Executor{
 		commands:      commandSet,
 		configuration: configuration,
 		usage:         usage,
 	}
 }
 
-func (a App) Run() error {
+func (a Executor) Run() error {
 	err := a.execute()
 	return err
 }
 
-func (a App) getCommand(commandString string) (commands.Command, error) {
+func (a Executor) getCommand(commandString string) (commands.Command, error) {
 	command, ok := a.commands[commandString]
 	if !ok {
 		a.usage.Print()
@@ -61,7 +61,7 @@ func (a App) getCommand(commandString string) (commands.Command, error) {
 	return command, nil
 }
 
-func (a App) execute() error {
+func (a Executor) execute() error {
 	command, err := a.getCommand(a.configuration.Command)
 	if err != nil {
 		return err

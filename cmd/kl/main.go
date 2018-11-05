@@ -7,7 +7,7 @@ import (
 	clogger "github.com/kun-lun/common/logger"
 	"github.com/kun-lun/common/storage"
 	"github.com/kun-lun/executor/commands"
-	"github.com/kun-lun/executor/executor"
+	executor "github.com/kun-lun/executor/pkg/apis"
 	"github.com/kun-lun/kunlun/config"
 	"github.com/spf13/afero"
 )
@@ -51,7 +51,7 @@ func main() {
 	// envIDGenerator := helpers.NewEnvIDGenerator(rand.Reader)
 	usage := commands.NewUsage(logger)
 
-	app := executor.New(appConfig, usage, logger, stateStore)
+	app := executor.NewExecutor(appConfig, usage, logger, stateStore)
 
 	err = app.Run()
 	if err != nil {

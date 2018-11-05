@@ -2,13 +2,16 @@
 
 
 [[projects]]
+  digest = "1:a2cff208d4759f6ba1b1cd228587b0a1869f95f22542ec9cd17fff64430113c7"
   name = "github.com/jessevdk/go-flags"
   packages = ["."]
+  pruneopts = "UT"
   revision = "c6ca198ec95c841fdb89fc0de7496fed11ab854e"
   version = "v1.4.0"
 
 [[projects]]
   branch = "draft"
+  digest = "1:9b6dabc7ad9210ecb5468c4d8b5fca0e7264e0b3aa3b1d4358417596c20b2e86"
   name = "github.com/kun-lun/common"
   packages = [
     "configuration",
@@ -17,35 +20,43 @@
     "flags",
     "helpers",
     "logger",
-    "storage"
+    "storage",
   ]
-  revision = "a554550d59fc78001bf16cde764d3d92eb0e25c0"
+  pruneopts = "UT"
+  revision = "65e1853a0f0f30d3b9ab5c54cb83cb2072639aaf"
 
 [[projects]]
   branch = "draft"
+  digest = "1:989e67203f5e154a7ab735855da72fce0c8a8026d27dbd426c580951ff767e03"
   name = "github.com/kun-lun/executor"
   packages = [
     "commands",
-    "executor"
+    "pkg/apis",
   ]
-  revision = "aa4751a24c1715924e3d79f8a83c91a00909e14a"
+  pruneopts = "UT"
+  revision = "e2d582cef65e12291fda5f6ebffe42b85187e360"
 
 [[projects]]
   branch = "master"
+  digest = "1:0e1e5f960c58fdc677212fcc70e55042a0084d367623e51afbdb568963832f5d"
   name = "github.com/nu7hatch/gouuid"
   packages = ["."]
+  pruneopts = "UT"
   revision = "179d4d0c4d8d407a32af483c2354df1d2c91e6c3"
 
 [[projects]]
+  digest = "1:6a4a11ba764a56d2758899ec6f3848d24698d48442ebce85ee7a3f63284526cd"
   name = "github.com/spf13/afero"
   packages = [
     ".",
-    "mem"
+    "mem",
   ]
+  pruneopts = "UT"
   revision = "d40851caa0d747393da1ffb28f7f9d8b4eeffebd"
   version = "v1.1.2"
 
 [[projects]]
+  digest = "1:8029e9743749d4be5bc9f7d42ea1659471767860f0cdc34d37c3111bd308a295"
   name = "golang.org/x/text"
   packages = [
     "internal/gen",
@@ -53,14 +64,24 @@
     "internal/ucd",
     "transform",
     "unicode/cldr",
-    "unicode/norm"
+    "unicode/norm",
   ]
+  pruneopts = "UT"
   revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
   version = "v0.3.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "a628c61b603081dcee25696599f86af294478e2b69fa5fb2f43175d7318d5d79"
+  input-imports = [
+    "github.com/jessevdk/go-flags",
+    "github.com/kun-lun/common/configuration",
+    "github.com/kun-lun/common/fileio",
+    "github.com/kun-lun/common/logger",
+    "github.com/kun-lun/common/storage",
+    "github.com/kun-lun/executor/commands",
+    "github.com/kun-lun/executor/pkg/apis",
+    "github.com/spf13/afero",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
