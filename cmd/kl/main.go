@@ -51,7 +51,7 @@ func main() {
 	// envIDGenerator := helpers.NewEnvIDGenerator(rand.Reader)
 	usage := commands.NewUsage(logger)
 
-	app := executor.NewExecutor(appConfig, usage, logger, stateStore)
+	app := executor.NewExecutor(appConfig, usage, logger, stateStore, afs)
 
 	err = app.Run()
 	if err != nil {

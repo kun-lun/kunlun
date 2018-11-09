@@ -11,7 +11,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:9b6dabc7ad9210ecb5468c4d8b5fca0e7264e0b3aa3b1d4358417596c20b2e86"
+  digest = "1:b729a211c7180eaebac98022472255f761ceeb1e0895ac8caa0d341a42837ec9"
   name = "github.com/kun-lun/common"
   packages = [
     "configuration",
@@ -23,18 +23,38 @@
     "storage",
   ]
   pruneopts = "UT"
-  revision = "65e1853a0f0f30d3b9ab5c54cb83cb2072639aaf"
+  revision = "74397567f5d9a3a29be19fd1bd7b450f1d082286"
 
 [[projects]]
   branch = "draft"
-  digest = "1:989e67203f5e154a7ab735855da72fce0c8a8026d27dbd426c580951ff767e03"
+  digest = "1:fc640218b681ee4409738b678262c60079ecb10641cdfe112415bd189e9ee0e6"
+  name = "github.com/kun-lun/digester"
+  packages = [
+    "pkg/apis",
+    "pkg/artifactgen",
+    "pkg/common",
+    "pkg/detector",
+    "pkg/detector/frameworks/laravel5",
+    "pkg/detector/frameworks/null",
+    "pkg/detector/packagemanagers/composer",
+    "pkg/detector/packagemanagers/null",
+    "pkg/detector/util",
+    "pkg/questionnaire",
+    "pkg/vmgroupcalc",
+  ]
+  pruneopts = "UT"
+  revision = "972b5e579ee56e72a1c8f83e48762923d152a52c"
+
+[[projects]]
+  branch = "draft"
+  digest = "1:3dc3a3b78c3fd8116b33f13334cc166fa918c3a69c67e752039f34fc3f78ad97"
   name = "github.com/kun-lun/executor"
   packages = [
     "commands",
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "e2d582cef65e12291fda5f6ebffe42b85187e360"
+  revision = "d8989db0b7b1236d0ae4133094a39f0be772ff5e"
 
 [[projects]]
   branch = "master"
@@ -69,6 +89,14 @@
   pruneopts = "UT"
   revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
   version = "v0.3.0"
+
+[[projects]]
+  digest = "1:342378ac4dcb378a5448dd723f0784ae519383532f5e70ade24132c4c8693202"
+  name = "gopkg.in/yaml.v2"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
+  version = "v2.2.1"
 
 [solve-meta]
   analyzer-name = "dep"

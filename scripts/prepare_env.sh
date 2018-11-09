@@ -13,7 +13,7 @@ do
   pushd $GOPATH/src/github.com/kun-lun/$i
     echo "now checking out ${i}"
     git remote remove origin
-    git remote add origin git@github.com:kun-lun/$i.git
+    git remote add origin https://github.com/kun-lun/$i.git
     # checkout the draft branch for now, remove this after v0.1 merged to the master.
     git fetch
     git checkout draft
