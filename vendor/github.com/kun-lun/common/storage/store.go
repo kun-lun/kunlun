@@ -133,17 +133,29 @@ func (s Store) GetDeploymentsDir() (string, error) {
 	return s.getDir("deployments", os.ModePerm)
 }
 
+func (s Store) GetDeploymentScriptFile() (string, error) {
+	deploymentsDir, err := s.GetDeploymentsDir()
+	if err != nil {
+		return "", err
+	}
+	return path.Join(deploymentsDir, "deploy.sh"), nil
+}
+
 func (s Store) GetAnsibleDir() (string, error) {
 	return s.getDir("deployments/ansible", os.ModePerm)
 }
 
-// TODO think about merge the vars dir with the global vars dir.
-func (s Store) GetAnsibleVarsFilePath() (string, error) {
-	artifactsDir, err := s.GetVarsDir()
+func (s Store) GetAnsibleMainFile() (string, error) {
+	ansibleDir, err := s.GetAnsibleDir()
 	if err != nil {
 		return "", err
 	}
-	return path.Join(artifactsDir, "ansible_vars.yml"), nil
+	return path.Join(ansibleDir, "main.yml"), nil
+}
+
+// TODO think about merge the vars dir with the global vars dir.
+func (s Store) GetAnsibleVarsDir() (string, error) {
+	return s.getDir("deployments/ansible/vars", os.ModePerm)
 }
 
 func (s Store) GetAnsibleInventoriesDir() (string, error) {

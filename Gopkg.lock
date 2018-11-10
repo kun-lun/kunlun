@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  branch = "master"
+  digest = "1:71570cb9af58f4981cd3b6ac9902b37e978e1f3c34f35a04a3a4837ea542500f"
+  name = "github.com/cppforlife/go-patch"
+  packages = ["patch"]
+  pruneopts = "UT"
+  revision = "250da0e0e68ce3367b4302f34218f6c064eb9559"
+
+[[projects]]
   digest = "1:a2cff208d4759f6ba1b1cd228587b0a1869f95f22542ec9cd17fff64430113c7"
   name = "github.com/jessevdk/go-flags"
   packages = ["."]
@@ -11,7 +19,38 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:b729a211c7180eaebac98022472255f761ceeb1e0895ac8caa0d341a42837ec9"
+  digest = "1:240c7b97ee82a0b38535ae8eaf1cc5c1f3e0ba142c16724ef8dea0fa28a886dd"
+  name = "github.com/kun-lun/artifacts"
+  packages = [
+    "pkg/apis",
+    "pkg/apis/builtinmanifests",
+    "pkg/apis/deployments",
+  ]
+  pruneopts = "UT"
+  revision = "5c2f9bde6927bd18ea842152a543c612b491b1f4"
+
+[[projects]]
+  branch = "draft"
+  digest = "1:4cc33b161089cfc7470cd52d77af519bb90ecc116f476108132375b7d37942d9"
+  name = "github.com/kun-lun/ashandler"
+  packages = [
+    "generator",
+    "pkg/apis",
+  ]
+  pruneopts = "UT"
+  revision = "5b2da8ee45d6f93f6156851bf36ee7b5ae2b177d"
+
+[[projects]]
+  branch = "draft"
+  digest = "1:d1233f9dae58ac1aed31aa8f23acafb924e8015df930ce0318fdeafb3a68e6dd"
+  name = "github.com/kun-lun/built-in-roles"
+  packages = ["pkg/apis"]
+  pruneopts = "UT"
+  revision = "f3e843d3f75bc279ae0c69240be67fa075236d7f"
+
+[[projects]]
+  branch = "draft"
+  digest = "1:cb712b78b8696dc1e3cffeb565595e94453dc91aca6b85d90c6591c713a28356"
   name = "github.com/kun-lun/common"
   packages = [
     "configuration",
@@ -23,7 +62,18 @@
     "storage",
   ]
   pruneopts = "UT"
-  revision = "f14e6ef865944748bdf42acf2ccaf9a6188bbe01"
+  revision = "c7becf49e2c2f7fc21488276629fc93ea4f50108"
+
+[[projects]]
+  branch = "draft"
+  digest = "1:e17404efae680af41d8339eaccbf233e82d17434be6034d152f9d3f9ba57a64a"
+  name = "github.com/kun-lun/deployment-producer"
+  packages = [
+    "dpbuilder",
+    "pkg/apis",
+  ]
+  pruneopts = "UT"
+  revision = "f9d71ab9a3c318190e21e39c3ae6e43d08a3513d"
 
 [[projects]]
   branch = "draft"
@@ -47,14 +97,15 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:3dc3a3b78c3fd8116b33f13334cc166fa918c3a69c67e752039f34fc3f78ad97"
+  digest = "1:1398fd2c10b35162035a77c72f6397acac88442c61dc29f5b4b522a61cc8b5d9"
   name = "github.com/kun-lun/executor"
   packages = [
     "commands",
+    "patching",
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "7d95a6bac03edf621c5ef4b40183208b2b92d6c3"
+  revision = "8bb74d4b65b986274e1600b5dcdd7aa9bf92fc86"
 
 [[projects]]
   branch = "master"
