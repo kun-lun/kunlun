@@ -44,6 +44,9 @@ func (a ASGenerator) Generate(hostGroups []deployments.HostGroup, deployments []
 		return err
 	}
 	ansibleDir, err := a.stateStore.GetAnsibleDir()
+	if err != nil {
+		return err
+	}
 	ansibleConfigFile := path.Join(ansibleDir, "ansible.cfg")
 	a.fs.WriteFile(ansibleConfigFile, builtInRolesFS, 0644)
 
@@ -128,9 +131,10 @@ type AnsibleHost struct {
 
 type role struct {
 	Role       string `yaml:"role"`
-	Become     string `yaml:"become"`
-	BecomeUser string `yaml:"become_user"`
+	Become     string `yaml:"become,omitempty"`
+	BecomeUser string `yaml:"become_user,omitempty"`
 }
+
 type depItem struct {
 	Hosts    string   `yaml:"hosts"`
 	VarsFile []string `yaml:"vars_files"`
@@ -164,14 +168,29 @@ func (a ASGenerator) generatePlaybookFile(deployments []deployments.Deployment) 
 		varsContent, _ := yaml.Marshal(dep.Vars)
 
 		a.logger.Printf("writting vars file to %s\n", varsFile)
-		err := ioutil.WriteFile(varsFile, varsContent, 0644)
+		err := a.fs.WriteFile(varsFile, varsContent, 0644)
 		if err != nil {
 			a.logger.Printf("write vars file failed: %s\n", err.Error())
 		}
+
+		roles := []role{}
+		for _, r := range dep.Roles {
+
+			role := role{
+				Role: r.Name,
+			}
+			if r.BecomeUser != "" {
+				role.Become = "true"
+			}
+			roles = append(roles, role)
+		}
+
 		depItem := depItem{
 			Hosts:    dep.HostGroupName,
 			VarsFile: []string{varsFile},
+			Roles:    roles,
 		}
+
 		depItems = append(depItems, depItem)
 	}
 	content, _ := yaml.Marshal(depItems)
