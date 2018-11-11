@@ -50,7 +50,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:e8504cb5af33fec92a02dba155e6b8d9d671eae371e59028be2a885cb8130b93"
+  digest = "1:599f50a4c0a3e68febceb20f9b53ff29c04670f4f36019efd60d79bcc3587a59"
   name = "github.com/kun-lun/common"
   packages = [
     "configuration",
@@ -62,7 +62,7 @@
     "storage",
   ]
   pruneopts = "UT"
-  revision = "62dc1104b1e2561653db812951ed8a12613287a2"
+  revision = "f7f052e28e81f919cca7eb1c3903f896bcc1d613"
 
 [[projects]]
   branch = "draft"
