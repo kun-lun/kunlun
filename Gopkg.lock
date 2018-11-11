@@ -31,14 +31,14 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:ac654e46c97dc894f8dc72b47ad71d19691a83a8b00605bc2c37c4cda2b58c78"
+  digest = "1:20b4f34cca4ca436087cf8cd6975b182959df2cb1912a95f6b8cbbb65da3ab7f"
   name = "github.com/kun-lun/ashandler"
   packages = [
     "generator",
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "c2f539f95c98ebf697821b2ac067381ff8718515"
+  revision = "6349f828f8e862c3f7e01ddc18fff269836fae99"
 
 [[projects]]
   branch = "draft"
@@ -73,7 +73,7 @@
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "70a2dfda9d8a368134e90144114597117ad07142"
+  revision = "143942913e35d5b171244bf4a3cf653009892301"
 
 [[projects]]
   branch = "draft"
@@ -105,7 +105,7 @@
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "3f90481f0d2f84ce55ea9aa2757ccc337b9dd5f6"
+  revision = "8aa2176f3b80093bd7b56d1de8922d95861a6186"
 
 [[projects]]
   branch = "master"
