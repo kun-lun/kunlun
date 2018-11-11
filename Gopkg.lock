@@ -97,7 +97,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:496c76b6f1046912c165192397ad594f98d4a7a67db403030161811f061949f6"
+  digest = "1:9c70692df323fed2a6fbe249b3ace49d3e97a415400c37752af9f6af952ed1f8"
   name = "github.com/kun-lun/executor"
   packages = [
     "commands",
@@ -105,7 +105,7 @@
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "f9c11bcfbbdc3fb0c2123abbe3a959457ad53f6b"
+  revision = "f9b16a45149f53c91af5566310b0216c8c0e83df"
 
 [[projects]]
   branch = "master"
