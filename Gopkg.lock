@@ -19,7 +19,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:240c7b97ee82a0b38535ae8eaf1cc5c1f3e0ba142c16724ef8dea0fa28a886dd"
+  digest = "1:e184ff1e21f3efe5cc05c3e5d56625d2bcbf4581e4708617406868b237e70c9d"
   name = "github.com/kun-lun/artifacts"
   packages = [
     "pkg/apis",
@@ -27,7 +27,7 @@
     "pkg/apis/deployments",
   ]
   pruneopts = "UT"
-  revision = "5c2f9bde6927bd18ea842152a543c612b491b1f4"
+  revision = "868dee36768e55cc757137c5a0effd905be46225"
 
 [[projects]]
   branch = "draft"
@@ -50,7 +50,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:cb712b78b8696dc1e3cffeb565595e94453dc91aca6b85d90c6591c713a28356"
+  digest = "1:e8504cb5af33fec92a02dba155e6b8d9d671eae371e59028be2a885cb8130b93"
   name = "github.com/kun-lun/common"
   packages = [
     "configuration",
@@ -62,7 +62,7 @@
     "storage",
   ]
   pruneopts = "UT"
-  revision = "c7becf49e2c2f7fc21488276629fc93ea4f50108"
+  revision = "62dc1104b1e2561653db812951ed8a12613287a2"
 
 [[projects]]
   branch = "draft"
@@ -97,7 +97,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:1398fd2c10b35162035a77c72f6397acac88442c61dc29f5b4b522a61cc8b5d9"
+  digest = "1:496c76b6f1046912c165192397ad594f98d4a7a67db403030161811f061949f6"
   name = "github.com/kun-lun/executor"
   packages = [
     "commands",
@@ -105,7 +105,7 @@
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "8bb74d4b65b986274e1600b5dcdd7aa9bf92fc86"
+  revision = "f9c11bcfbbdc3fb0c2123abbe3a959457ad53f6b"
 
 [[projects]]
   branch = "master"
@@ -114,6 +114,14 @@
   packages = ["."]
   pruneopts = "UT"
   revision = "179d4d0c4d8d407a32af483c2354df1d2c91e6c3"
+
+[[projects]]
+  digest = "1:40e195917a951a8bf867cd05de2a46aaf1806c50cf92eebf4c16f78cd196f747"
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
+  version = "v0.8.0"
 
 [[projects]]
   digest = "1:6a4a11ba764a56d2758899ec6f3848d24698d48442ebce85ee7a3f63284526cd"
@@ -125,6 +133,22 @@
   pruneopts = "UT"
   revision = "d40851caa0d747393da1ffb28f7f9d8b4eeffebd"
   version = "v1.1.2"
+
+[[projects]]
+  branch = "master"
+  digest = "1:082c538aa8ca5e086d5d20ec16417e7fca237de2c4146485e02aa09989d0ff38"
+  name = "golang.org/x/crypto"
+  packages = [
+    "curve25519",
+    "ed25519",
+    "ed25519/internal/edwards25519",
+    "internal/chacha20",
+    "internal/subtle",
+    "poly1305",
+    "ssh",
+  ]
+  pruneopts = "UT"
+  revision = "e4dc69e5b2fd71dcaf8bd5d054eb936deb78d1fa"
 
 [[projects]]
   digest = "1:8029e9743749d4be5bc9f7d42ea1659471767860f0cdc34d37c3111bd308a295"
