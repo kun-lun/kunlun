@@ -6,19 +6,19 @@ import (
     "reflect"
 )
 
-type NonIaaS struct {
+type NonInfra struct {
     ProjectPath         string
     ProgrammingLanguage ProgrammingLanguage
     Databases           []Database
 }
 
-type IaaS struct {
-    Size string
+type Infra struct {
+    Size InfraSize
 }
 
 type Blueprint struct {
-    NonIaaS NonIaaS
-    IaaS    IaaS
+    NonInfra NonInfra
+    Infra    Infra
 }
 
 type blueprintForYaml struct {
@@ -44,19 +44,19 @@ func (b Blueprint) ExposeYaml(filePath string) error {
         return err
     }
     bpfy := blueprintForYaml{
-        ProjectPath: b.NonIaaS.ProjectPath,
-        ProgrammingLanguage: string(b.NonIaaS.ProgrammingLanguage),
-        VMGroupSize: b.IaaS.Size,
+        ProjectPath: b.NonInfra.ProjectPath,
+        ProgrammingLanguage: string(b.NonInfra.ProgrammingLanguage),
+        VMGroupSize: string(b.Infra.Size),
     }
     // TODO support more. Assume at most one database for now.
-    if len(b.NonIaaS.Databases) > 0 {
-        bpfy.DatabaseDriver = b.NonIaaS.Databases[0].Driver
-        bpfy.DatabaseVersion = b.NonIaaS.Databases[0].Version
-        bpfy.DatabaseStorage = b.NonIaaS.Databases[0].Storage
-        bpfy.DatabaseOriginHost = b.NonIaaS.Databases[0].OriginHost
-        bpfy.DatabaseOriginName = b.NonIaaS.Databases[0].OriginName
-        bpfy.DatabaseOriginUsername = b.NonIaaS.Databases[0].OriginUsername
-        bpfy.DatabaseOriginPassword = b.NonIaaS.Databases[0].OriginPassword
+    if len(b.NonInfra.Databases) > 0 {
+        bpfy.DatabaseDriver = b.NonInfra.Databases[0].Driver
+        bpfy.DatabaseVersion = b.NonInfra.Databases[0].Version
+        bpfy.DatabaseStorage = b.NonInfra.Databases[0].Storage
+        bpfy.DatabaseOriginHost = b.NonInfra.Databases[0].OriginHost
+        bpfy.DatabaseOriginName = b.NonInfra.Databases[0].OriginName
+        bpfy.DatabaseOriginUsername = b.NonInfra.Databases[0].OriginUsername
+        bpfy.DatabaseOriginPassword = b.NonInfra.Databases[0].OriginPassword
     }
     bpBytes, _ := yaml.Marshal(bpfy)
     return ioutil.WriteFile(filePath, bpBytes, 0644)
@@ -73,14 +73,18 @@ func ImportBlueprintYaml(filePath string) (Blueprint, error) {
         return bp, err
     }
 
-    bp.IaaS = IaaS{
-        Size:  bpfy.VMGroupSize,
+    bp.Infra = Infra{
     }
-    bp.NonIaaS = NonIaaS{
+    bp.Infra.Size, err = ParseInfraSize(bpfy.VMGroupSize)
+    if err != nil {
+        return bp, err
+    }
+
+    bp.NonInfra = NonInfra{
         ProjectPath: bpfy.ProjectPath,
     }
 
-    bp.NonIaaS.ProgrammingLanguage, err =
+    bp.NonInfra.ProgrammingLanguage, err =
         ParseProgrammingLanguage(bpfy.ProgrammingLanguage)
     if err != nil {
         return bp, err
@@ -106,7 +110,7 @@ func ImportBlueprintYaml(filePath string) (Blueprint, error) {
         }
     }
     if !allEmpty {
-        bp.NonIaaS.Databases = append(bp.NonIaaS.Databases, db)
+        bp.NonInfra.Databases = append(bp.NonInfra.Databases, db)
     }
 
     if err = bp.finalValidation(); err != nil {

@@ -8,8 +8,8 @@ type Requirment struct {
     ConcurrentUserNumber int
 }
 
-func Calc(r Requirment) common.IaaS {
-    res := common.IaaS{
+func Calc(r Requirment) common.Infra {
+    res := common.Infra{
         Size: common.SizeSmall,
     }
     x := r.ConcurrentUserNumber

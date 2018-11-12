@@ -29,7 +29,7 @@ func New(projectPath string) (*Detector, error) {
     return &Detector{
         projectPath: projectPath,
         blueprint: common.Blueprint{
-            NonIaaS: common.NonIaaS{
+            NonInfra: common.NonInfra{
                 ProjectPath: projectPath,
             },
         },
@@ -69,12 +69,12 @@ func (d *Detector) ConfirmFramework(fwn string) {
     } else {
         d.framework = nullFramework.New()
     }
-    d.blueprint.NonIaaS.ProgrammingLanguage = d.framework.GetProgrammingLanguage()
+    d.blueprint.NonInfra.ProgrammingLanguage = d.framework.GetProgrammingLanguage()
 }
 
 // Only one database in an array for now
 func (d *Detector) DetectConfig() {
-    d.blueprint.NonIaaS.Databases = d.framework.DetectConfig(d.projectPath)
+    d.blueprint.NonInfra.Databases = d.framework.DetectConfig(d.projectPath)
 }
 
 func (d *Detector) ExposeKnownInfo() common.Blueprint {
