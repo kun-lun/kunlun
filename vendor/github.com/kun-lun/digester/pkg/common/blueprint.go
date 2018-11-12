@@ -1,20 +1,19 @@
-package artifactgen
+package common
 
 import (
     "io/ioutil"
     "gopkg.in/yaml.v2"
-
-    "github.com/kun-lun/digester/pkg/common"
+    "reflect"
 )
 
 type NonIaaS struct {
     ProjectPath         string
-    ProgrammingLanguage common.ProgrammingLanguage
-    Databases           []common.Database
+    ProgrammingLanguage ProgrammingLanguage
+    Databases           []Database
 }
 
 type IaaS struct {
-    VMGroup common.VMGroup
+    Size string
 }
 
 type Blueprint struct {
@@ -32,7 +31,6 @@ type blueprintForYaml struct {
     DatabaseOriginName      string `yaml:"database_origin_name,omitempty"`
     DatabaseOriginUsername  string `yaml:"database_origin_username,omitempty"`
     DatabaseOriginPassword  string `yaml:"database_origin_password,omitempty"`
-    VMGroupCount            int    `yaml:"vmgroup_count,omitempty"`
     VMGroupSize             string `yaml:"vmgroup_size,omitempty"`
 }
 
@@ -45,13 +43,12 @@ func (b Blueprint) ExposeYaml(filePath string) error {
     if err := b.finalValidation(); err != nil {
         return err
     }
-    // assume at most one database for now
     bpfy := blueprintForYaml{
         ProjectPath: b.NonIaaS.ProjectPath,
         ProgrammingLanguage: string(b.NonIaaS.ProgrammingLanguage),
-        VMGroupCount: b.IaaS.VMGroup.Count,
-        VMGroupSize: b.IaaS.VMGroup.Size,
+        VMGroupSize: b.IaaS.Size,
     }
+    // TODO support more. Assume at most one database for now.
     if len(b.NonIaaS.Databases) > 0 {
         bpfy.DatabaseDriver = b.NonIaaS.Databases[0].Driver
         bpfy.DatabaseVersion = b.NonIaaS.Databases[0].Version
@@ -65,23 +62,56 @@ func (b Blueprint) ExposeYaml(filePath string) error {
     return ioutil.WriteFile(filePath, bpBytes, 0644)
 }
 
-func (b Blueprint) ImportYaml(filePath string) error {
-    /*
+func ImportBlueprintYaml(filePath string) (Blueprint, error) {
+    bp := Blueprint{}
     bpfy := blueprintForYaml{}
     bpBytes, err := ioutil.ReadFile(filePath)
     if err != nil {
-        return err
+        return bp, err
     }
     if err = yaml.Unmarshal(bpBytes, &bpfy); err != nil {
-        return err
+        return bp, err
     }
-    */
-    return nil
-}
 
-func (b Blueprint) ExposeArtifects(filePath string) error {
-    if err := b.finalValidation(); err != nil {
-        return err
+    bp.IaaS = IaaS{
+        Size:  bpfy.VMGroupSize,
     }
-    return nil
+    bp.NonIaaS = NonIaaS{
+        ProjectPath: bpfy.ProjectPath,
+    }
+
+    bp.NonIaaS.ProgrammingLanguage, err =
+        ParseProgrammingLanguage(bpfy.ProgrammingLanguage)
+    if err != nil {
+        return bp, err
+    }
+
+    // TODO support more. Assume at most one database for now.
+    db := Database{
+        Driver: bpfy.DatabaseDriver,
+        Version: bpfy.DatabaseVersion,
+        Storage: bpfy.DatabaseStorage,
+        OriginHost: bpfy.DatabaseOriginHost,
+        OriginName: bpfy.DatabaseOriginName,
+        OriginUsername: bpfy.DatabaseOriginUsername,
+        OriginPassword: bpfy.DatabaseOriginPassword,
+    }
+    allEmpty := true
+    s := reflect.ValueOf(&db).Elem()
+    for i := 0; i < s.NumField(); i++ {
+        valField := s.Field(i)
+        val := valField.Interface().(string)
+        if (val != "") {
+            allEmpty = false
+        }
+    }
+    if !allEmpty {
+        bp.NonIaaS.Databases = append(bp.NonIaaS.Databases, db)
+    }
+
+    if err = bp.finalValidation(); err != nil {
+        return bp, err
+    }
+
+    return bp, nil
 }

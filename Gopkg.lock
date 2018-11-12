@@ -19,7 +19,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:e184ff1e21f3efe5cc05c3e5d56625d2bcbf4581e4708617406868b237e70c9d"
+  digest = "1:18fc565cdda06c87fba23996e885cadd34913c846ea5d240e2c3ef28a7c3976f"
   name = "github.com/kun-lun/artifacts"
   packages = [
     "pkg/apis",
@@ -27,18 +27,18 @@
     "pkg/apis/deployments",
   ]
   pruneopts = "UT"
-  revision = "868dee36768e55cc757137c5a0effd905be46225"
+  revision = "4fc4054d73bfe95774c0c4e62107895bbeb7eb59"
 
 [[projects]]
   branch = "draft"
-  digest = "1:69fd61afb786ac53356d2dc712a3aa0c68cc81263f37e9427e1856d9bd494e34"
+  digest = "1:d4662cabc2e2e0a31d23710a56c17b5f8aa11db68f4c58b34389f31a5879a40d"
   name = "github.com/kun-lun/ashandler"
   packages = [
     "generator",
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "e43ea82b4dd24f8f01eb729adbd8acd818647a58"
+  revision = "eaabf09a6c7b33a9bdfccf717621848821f18bcb"
 
 [[projects]]
   branch = "draft"
@@ -77,11 +77,10 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:76e8e0cf031f091f1f01e5adb1b67b08915bd07e4a2220cdc91a49576400bab7"
+  digest = "1:451c9e8ec48e05cd1a8c788a99595fa28fde3ecda9eb081e0e87a5ea7a2b28ba"
   name = "github.com/kun-lun/digester"
   packages = [
     "pkg/apis",
-    "pkg/artifactgen",
     "pkg/common",
     "pkg/detector",
     "pkg/detector/frameworks/laravel5",
@@ -93,7 +92,7 @@
     "pkg/vmgroupcalc",
   ]
   pruneopts = "UT"
-  revision = "a615691f5eeddd8497acb2c7097c2cbc1a0d099a"
+  revision = "e0ce1d26413db95774e6bf50a49bf33f50a3c36f"
 
 [[projects]]
   branch = "draft"

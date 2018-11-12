@@ -133,8 +133,8 @@ type AnsibleHost struct {
 
 type role struct {
 	Role       string `yaml:"role"`
-	Become     string `yaml:"become"`
-	BecomeUser string `yaml:"become_user"`
+	Become     string `yaml:"become,omitempty"`
+	BecomeUser string `yaml:"become_user,omitempty"`
 }
 type depItem struct {
 	Hosts    string   `yaml:"hosts"`
@@ -230,12 +230,12 @@ func (a ASGenerator) prepareBuiltInRoles(deployments []deployments.Deployment) e
 					return err
 				}
 				targetPath := path.Join(ansibleDir, "./"+filePath)
-				a.logger.Printf("base dir is %s\n", path.Dir(targetPath))
+				// a.logger.Printf("base dir is %s\n", path.Dir(targetPath))
 				err = a.fs.MkdirAll(path.Dir(targetPath), 0744)
 				if err != nil {
 					return err
 				}
-				a.logger.Printf("writing to %s\n", targetPath)
+				// a.logger.Printf("writing to %s\n", targetPath)
 				err = a.fs.WriteFile(targetPath, content, 0644)
 				if err != nil {
 					return err
