@@ -105,6 +105,15 @@ func (s Store) GetMainArtifactFilePath() (string, error) {
 	return path.Join(artifactsDir, "main.yml"), nil
 }
 
+// GetMainArtifactVarsFilePath get the variables file path
+func (s Store) GetMainArtifactVarsFilePath() (string, error) {
+	artifactsDir, err := s.GetVarsDir()
+	if err != nil {
+		return "", err
+	}
+	return path.Join(artifactsDir, "main-vars-file.yml"), nil
+}
+
 // GetMainArtifactVarsStoreFilePath get the vars store, to store the vars generated.
 func (s Store) GetMainArtifactVarsStoreFilePath() (string, error) {
 	artifactsDir, err := s.GetVarsDir()
