@@ -13,3 +13,6 @@
 
 kl-state.json
 /cmd/kl/kl
+
+# Environment
+.env*

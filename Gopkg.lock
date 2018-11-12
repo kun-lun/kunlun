@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  digest = "1:0ef770954bca104ee99b3b6b7f9b240605ac03517d9f98cbc1893daa03f3c038"
+  name = "github.com/coreos/go-semver"
+  packages = ["semver"]
+  pruneopts = "UT"
+  revision = "8ab6407b697782a06568d4b7f1db25550ec2e4c6"
+  version = "v0.2.0"
+
+[[projects]]
   branch = "master"
   digest = "1:71570cb9af58f4981cd3b6ac9902b37e978e1f3c34f35a04a3a4837ea542500f"
   name = "github.com/cppforlife/go-patch"
@@ -19,7 +27,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:92744a7a300f687a767d85f8492ba0cd5ff9bfa170399074fd55bc0fc73ec606"
+  digest = "1:44e4e2c74a3d7b08e394e1ce1cefc3c819e31f1632be98a9625766990617f113"
   name = "github.com/kun-lun/artifacts"
   packages = [
     "pkg/apis",
@@ -27,7 +35,7 @@
     "pkg/apis/deployments",
   ]
   pruneopts = "UT"
-  revision = "d3c4ddc71ea44f030a85a23c5f06da6944c65bc7"
+  revision = "87e1a62352e512148beb1bd93ef7acafbb5b43ce"
 
 [[projects]]
   branch = "draft"
@@ -96,14 +104,25 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:4fca7ef66f06279ba03f62a61904b33749e1c856bf06e19486f96d49bd2ae404"
+  digest = "1:cd75af13206b6dc085f0a0604fa99b12133ff4b86db02c3fb954318732ee319a"
   name = "github.com/kun-lun/executor"
   packages = [
     "commands",
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "428b0cc37f4fb80cb2537cad1a0136c888820990"
+  revision = "8c6b5aaebce01c3e0990fc0ec111ba62f24bd2d8"
+
+[[projects]]
+  branch = "draft"
+  digest = "1:5ed999c72adcdaab0842488dfc204508c7c76a68fa8708a81299602b95e023d7"
+  name = "github.com/kun-lun/infra-producer"
+  packages = [
+    "handler",
+    "pkg/apis",
+  ]
+  pruneopts = "UT"
+  revision = "4e9efb72024418b2d86e42169f52ff5e88d089db"
 
 [[projects]]
   branch = "draft"
@@ -112,6 +131,18 @@
   packages = ["pkg/apis"]
   pruneopts = "UT"
   revision = "d83bf197a1dad5a5433d084c6512e9954e186f34"
+
+[[projects]]
+  branch = "draft"
+  digest = "1:28c69e89a70c9d9bc526cbd28bfa8be2d39c2685ee24e2a1c42fb442d9f6ba8f"
+  name = "github.com/kun-lun/tfhandler"
+  packages = [
+    "terraform",
+    "terraform/binary_dist",
+    "terraform/templates",
+  ]
+  pruneopts = "UT"
+  revision = "e6a950840b8aca7b56404371a5da5c97113118a1"
 
 [[projects]]
   branch = "master"
