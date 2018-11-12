@@ -2,7 +2,7 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-projects_array=("artifacts" "built-in-roles" "common" "deployment-producer" "executor" \
+projects_array=("artifacts" "built-in-roles" "common" "patching" "deployment-producer" "executor" \
 "migration-producer" "test-infra" "verification-producer" \
 "ashandler" "digester" "infra-producer" "report-producer" \
 "tfhandler" "kunlun")

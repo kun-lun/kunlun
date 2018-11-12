@@ -9,6 +9,8 @@ iaas: azure # this can be azure or some other platform
 
 vm_groups:
   - name: jumpbox
+    meta:
+      group_type: jumpbox
     count: 1
     sku: Standard_B1s
     type: vm
@@ -42,7 +44,7 @@ vm_groups:
   - name: web-servers
     count: 1
     sku: Standard_B1s
-    type: vmss # this can be vm or vmss
+    type: vm # this can be vm or vmss
     os_profile:
       admin_name: kunlun
       linux_configuration:
