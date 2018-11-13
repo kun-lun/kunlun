@@ -27,7 +27,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:44e4e2c74a3d7b08e394e1ce1cefc3c819e31f1632be98a9625766990617f113"
+  digest = "1:cb5328c7afd39fd55a1b10b75afb1d39a59fe1314402d677220c9c7a82c6e8e3"
   name = "github.com/kun-lun/artifacts"
   packages = [
     "pkg/apis",
@@ -35,7 +35,7 @@
     "pkg/apis/deployments",
   ]
   pruneopts = "UT"
-  revision = "87e1a62352e512148beb1bd93ef7acafbb5b43ce"
+  revision = "3f2f5e51b588f943c56f7e22f16c19c1d5645f1f"
 
 [[projects]]
   branch = "draft"
@@ -58,7 +58,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:c08c9a268682048eedad338d1506a4b3e00315fcc580d566c220f21dcddd8c61"
+  digest = "1:a7a3c7243288c717a33254cb999fbfc16d36780465b14e24eea128ac2ca76440"
   name = "github.com/kun-lun/common"
   packages = [
     "configuration",
@@ -70,7 +70,7 @@
     "storage",
   ]
   pruneopts = "UT"
-  revision = "6b9fd456f26e3b8d25d4c6066fcf79205fb7bb79"
+  revision = "e83ee98715c421a36b2f545c16c56bb6511d5fab"
 
 [[projects]]
   branch = "draft"
@@ -104,14 +104,14 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:cd75af13206b6dc085f0a0604fa99b12133ff4b86db02c3fb954318732ee319a"
+  digest = "1:88736e9e769ed2120049dbf87cf812eb65230c8606f5d273ba87c267ba835abd"
   name = "github.com/kun-lun/executor"
   packages = [
     "commands",
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "8c6b5aaebce01c3e0990fc0ec111ba62f24bd2d8"
+  revision = "b837d820eb5cfe40249ed6a2ece9faf83d42ead6"
 
 [[projects]]
   branch = "draft"
@@ -126,11 +126,11 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:d1ff38b791d7f10d1f5df2ecb06fcc3005c579779d35ee861cd0457bfe5d5616"
+  digest = "1:7cb13041d1335e4567c88e520474d55bece8471a97c0c794e144ff27ce0f96e3"
   name = "github.com/kun-lun/patching"
   packages = ["pkg/apis"]
   pruneopts = "UT"
-  revision = "d83bf197a1dad5a5433d084c6512e9954e186f34"
+  revision = "ee37d0b37d6d972f503b90f9e0f540e828439eb7"
 
 [[projects]]
   branch = "draft"
@@ -185,7 +185,7 @@
     "ssh",
   ]
   pruneopts = "UT"
-  revision = "e4dc69e5b2fd71dcaf8bd5d054eb936deb78d1fa"
+  revision = "3d3f9f413869b949e48070b5bc593aa22cc2b8f2"
 
 [[projects]]
   digest = "1:8029e9743749d4be5bc9f7d42ea1659471767860f0cdc34d37c3111bd308a295"

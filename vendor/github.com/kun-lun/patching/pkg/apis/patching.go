@@ -53,7 +53,10 @@ func (p Patching) ProvisionManifest() (*artifacts.Manifest, error) {
 	varsFileArg := VarsFileArg{
 		fs: p.fs,
 	}
-	varsFileArg.UnmarshalFlag(artifactVarsFilePath)
+	err = varsFileArg.UnmarshalFlag(artifactVarsFilePath)
+	if err != nil {
+		return nil, err
+	}
 
 	varsStore := VarsFSStore{
 		fs: p.fs,
