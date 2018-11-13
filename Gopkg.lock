@@ -104,14 +104,14 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:6c8a321ef742bc94e9cdaf24e3d9fd4db5865fe8fc5ebf55fe259497ab1e8ad3"
+  digest = "1:0731aeebcdd7f1bb066f14251a640c7c7d3ba55c3db2fd874a33ffb34b7dbc1f"
   name = "github.com/kun-lun/executor"
   packages = [
     "commands",
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "1e9806dd250a8416ee3f5eacb05272ff83549ae6"
+  revision = "ee6fa2158840209a00ced5b3eed9cd40b1fbe76c"
 
 [[projects]]
   branch = "draft"
