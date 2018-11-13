@@ -5,27 +5,38 @@ import (
 	"fmt"
 	"github.com/kun-lun/common/storage"
 	"github.com/kun-lun/digester/pkg/common"
-	"github.com/kun-lun/digester/pkg/detector"
+	//"github.com/kun-lun/digester/pkg/detector"
 	"github.com/kun-lun/digester/pkg/vmgroupcalc"
 	"log"
 	"os"
 	"reflect"
 	"strconv"
-	"strings"
+	//"strings"
 )
 
 var (
 	scanner = bufio.NewScanner(os.Stdin)
 )
 
-func Run(state storage.State) common.Blueprint {
-	fmt.Println("Project path?")
+func Run(state storage.State, filePath string) common.Blueprint {
+    bp, _ := common.ImportBlueprintYaml(filePath)
+
+	fmt.Printf("Project path?")
+    if bp.NonInfra.ProjectPath != "" {
+        fmt.Printf(" Default: %s", bp.NonInfra.ProjectPath)
+    }
+    fmt.Printf("\n")
 	scanner.Scan()
 	path := scanner.Text()
+    if path != "" {
+        bp.NonInfra.ProjectPath = path
+    }
+    /*
 	d, err := detector.New(path)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 
 	possiblePackageManagers := d.DetectPackageManager()
 	fmt.Printf("What is the package manager for the project?")
@@ -41,7 +52,6 @@ func Run(state storage.State) common.Blueprint {
 	} else {
 		fmt.Printf("\n")
 	}
-
 	scanner.Scan()
 	inputPackageManager := scanner.Text()
 	if inputPackageManager == "" {
@@ -63,7 +73,6 @@ func Run(state storage.State) common.Blueprint {
 	} else {
 		fmt.Printf(" NONE?\n")
 	}
-
 	scanner.Scan()
 	inputFramework := scanner.Text()
 	if inputFramework == "" {
@@ -75,23 +84,31 @@ func Run(state storage.State) common.Blueprint {
 
 	d.DetectConfig()
 
-	bp := d.ExposeKnownInfo()
+	bp = d.ExposeKnownInfo()
+    */
+
 
 	// Ask for the empty fields
 	bpNonInfra := &bp.NonInfra
-	if bpNonInfra.ProgrammingLanguage == "" {
-		fmt.Println("What's the programming language? Allowed values: {php}")
-		scanner.Scan()
-		input := scanner.Text()
-		pl, err := common.ParseProgrammingLanguage(input)
-		if err != nil {
-			log.Fatal(err)
-		}
-		bpNonInfra.ProgrammingLanguage = pl
-	}
+	fmt.Printf("What's the programming language?")
+
+    if bpNonInfra.ProgrammingLanguage != "" {
+        fmt.Printf(" Default: %s", bpNonInfra.ProgrammingLanguage)
+    }
+    fmt.Printf(" Allowed values: {php}\n")
+	scanner.Scan()
+	input := scanner.Text()
+    if input != "" {
+    	pl, err := common.ParseProgrammingLanguage(input)
+    	if err != nil {
+    		log.Fatal(err)
+    	}
+    	bpNonInfra.ProgrammingLanguage = pl
+    }
+
 	if len(bpNonInfra.Databases) > 0 {
 		needExtraInfo := false
-		fmt.Println("Here is the database(s) we found:")
+		fmt.Println("Here is the database(s):")
 		for i, db := range bpNonInfra.Databases {
 			fmt.Printf("No.%d: {\n", i+1)
 			s := reflect.ValueOf(&db).Elem()
@@ -123,7 +140,7 @@ func Run(state storage.State) common.Blueprint {
 		fmt.Println("Do you use any databases? How many? Allowed values: {n | n >= 0}")
 	}
 	scanner.Scan()
-	input := scanner.Text()
+	input = scanner.Text()
 	extraDatabasesNum, err := strconv.Atoi(input)
 	if err != nil {
 		log.Fatal(err)
@@ -147,28 +164,32 @@ func Run(state storage.State) common.Blueprint {
 	})
 
 	// Ask for Misc
-	bp.Misc = common.Misc{
-		ResourceGroupName: "kl-" + state.EnvID,
-	}
+	if bp.Misc.ResourceGroupName == "" {
+        bp.Misc.ResourceGroupName = "kl-" + state.EnvID
+    }
 	s := reflect.ValueOf(&bp.Misc).Elem()
 	for i := 0; i < s.NumField(); i++ {
 		valField := s.Field(i)
 		typeField := s.Type().Field(i)
 		tag := typeField.Tag
 		val := valField.Interface().(string)
+        var defaultVal string
 		if val == "" {
-			fmt.Printf(
-				"%s default: %s\n",
-				tag.Get("question"),
-				tag.Get("default"),
-			)
-			scanner.Scan()
-			input := scanner.Text()
-			if input == "" {
-				valField.SetString(tag.Get("default"))
-			} else {
-				valField.SetString(input)
-			}
+            defaultVal = tag.Get("default")
+        } else {
+            defaultVal = val
+        }
+		fmt.Printf(
+			"%s Default: %s\n",
+			tag.Get("question"),
+			defaultVal,
+		)
+		scanner.Scan()
+		input := scanner.Text()
+		if input == "" {
+			valField.SetString(defaultVal)
+		} else {
+			valField.SetString(input)
 		}
 	}
 

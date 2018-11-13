@@ -27,7 +27,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:b07d32fe62d214943f22450944e5d5244a667245c4b733de69e2d9e1aee28761"
+  digest = "1:993408e44550df3589992e69650131e44b2d394178a1a337f2191b96de8be933"
   name = "github.com/kun-lun/artifacts"
   packages = [
     "pkg/apis",
@@ -35,7 +35,7 @@
     "pkg/apis/deployments",
   ]
   pruneopts = "UT"
-  revision = "c7841d7a2ff12838a6461443f2da4dc456d2b2c5"
+  revision = "435351e02127e920dd163a1c2f30bfd37f3e3e1f"
 
 [[projects]]
   branch = "draft"
@@ -58,7 +58,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:01380f4607f3de828b83a1423dd962f77bbbc94e124c36224418c483b1246b74"
+  digest = "1:526fa9200a50f07574751dba43aba00bb5d7a0215145892525770ea665f3329e"
   name = "github.com/kun-lun/common"
   packages = [
     "configuration",
@@ -70,7 +70,7 @@
     "storage",
   ]
   pruneopts = "UT"
-  revision = "11580d80d8ecaebf40fc4aee67d8f882ef7ed48b"
+  revision = "cf5765a53f83c9cd20042875e21df63933a28a20"
 
 [[projects]]
   branch = "draft"
@@ -85,22 +85,16 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:bfc94c47f34550df15ed002a9152fb14563f03bc8997180e2760564e998afb68"
+  digest = "1:95666368df20daf9cc12cc62e5873038ec49895dd752fd11797ebab65d3112ec"
   name = "github.com/kun-lun/digester"
   packages = [
     "pkg/apis",
     "pkg/common",
-    "pkg/detector",
-    "pkg/detector/frameworks/laravel5",
-    "pkg/detector/frameworks/null",
-    "pkg/detector/packagemanagers/composer",
-    "pkg/detector/packagemanagers/null",
-    "pkg/detector/util",
     "pkg/questionnaire",
     "pkg/vmgroupcalc",
   ]
   pruneopts = "UT"
-  revision = "58b36a46e21971279b86a175be0fbec90e44e873"
+  revision = "3d204ebf96e2e118dad6b4cc2cc11ff156d5e8a2"
 
 [[projects]]
   branch = "draft"
@@ -134,7 +128,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:549fa5446275ab2b53d42cfc592922c8f1af56c0e0bdaf0d9036644f40a44180"
+  digest = "1:060641461fd3c38ef93b272533b8e5b97d7cd81cbe94bc8825426390f7b0f022"
   name = "github.com/kun-lun/tfhandler"
   packages = [
     "terraform",
@@ -142,7 +136,7 @@
     "terraform/templates",
   ]
   pruneopts = "UT"
-  revision = "6b39bfa79036ec1a6d871db615b8ffb788905e0c"
+  revision = "c110f149e8c7d753cd3fc7d59c85c28a984ddac4"
 
 [[projects]]
   branch = "master"
