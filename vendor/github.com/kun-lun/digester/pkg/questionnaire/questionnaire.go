@@ -19,11 +19,12 @@ var (
 )
 
 func Run(state storage.State, filePath string) common.Blueprint {
+    var err error
     bp, _ := common.ImportBlueprintYaml(filePath)
 
 	fmt.Printf("Project path?")
     if bp.NonInfra.ProjectPath != "" {
-        fmt.Printf(" Default: %s", bp.NonInfra.ProjectPath)
+        fmt.Printf(" Default: %s.", bp.NonInfra.ProjectPath)
     }
     fmt.Printf("\n")
 	scanner.Scan()
@@ -93,9 +94,9 @@ func Run(state storage.State, filePath string) common.Blueprint {
 	fmt.Printf("What's the programming language?")
 
     if bpNonInfra.ProgrammingLanguage != "" {
-        fmt.Printf(" Default: %s", bpNonInfra.ProgrammingLanguage)
+        fmt.Printf(" Default: %s.", bpNonInfra.ProgrammingLanguage)
     }
-    fmt.Printf(" Allowed values: {php}\n")
+    fmt.Printf(" Allowed values: {php}.\n")
 	scanner.Scan()
 	input := scanner.Text()
     if input != "" {
@@ -116,9 +117,13 @@ func Run(state storage.State, filePath string) common.Blueprint {
 				valField := s.Field(j)
 				typeField := s.Type().Field(j)
 				tag := typeField.Tag
-				val := valField.Interface().(string)
-				fmt.Printf("  %s: %s\n", tag.Get("name"), val)
-				if val == "" {
+				val := valField.Interface()
+                if valField.Kind() == reflect.Int {
+    				fmt.Printf("  %s: %d\n", tag.Get("name"), val)
+                } else {
+                    fmt.Printf("  %s: %s\n", tag.Get("name"), val)
+                }
+				if val == reflect.Zero(valField.Type()).Interface() {
 					needExtraInfo = true
 				}
 			}
@@ -135,33 +140,23 @@ func Run(state storage.State, filePath string) common.Blueprint {
 	}
 
 	if len(bpNonInfra.Databases) > 0 {
-		fmt.Println("Do you use any more databases? How many? Allowed values: {n | n >= 0}")
+		fmt.Println("Do you use any more databases? How many? Default: 0. Allowed values: {n | n >= 0}.")
 	} else {
-		fmt.Println("Do you use any databases? How many? Allowed values: {n | n >= 0}")
+		fmt.Println("Do you use any databases? How many? Default: 0. Allowed values: {n | n >= 0}.")
 	}
 	scanner.Scan()
 	input = scanner.Text()
-	extraDatabasesNum, err := strconv.Atoi(input)
-	if err != nil {
-		log.Fatal(err)
-	}
-	for i := 1; i <= extraDatabasesNum; i++ {
-		newDb := common.Database{}
-		askForDbEmptyFields(len(bpNonInfra.Databases)+1, &newDb)
-		bpNonInfra.Databases = append(bpNonInfra.Databases, newDb)
-	}
-
-	fmt.Println("What's your expected number of concurrent users?")
-	scanner.Scan()
-	concurrentUserNumberStr := scanner.Text()
-	var concurrentUserNumber int
-	concurrentUserNumber, err = strconv.Atoi(concurrentUserNumberStr)
-	if err != nil {
-		log.Fatal(err)
-	}
-	bp.Infra = vmgroupcalc.Calc(vmgroupcalc.Requirment{
-		ConcurrentUserNumber: concurrentUserNumber,
-	})
+    if input != "" {
+    	extraDatabasesNum, err := strconv.Atoi(input)
+    	if err != nil {
+    		log.Fatal(err)
+    	}
+    	for i := 1; i <= extraDatabasesNum; i++ {
+    		newDb := common.Database{}
+    		askForDbEmptyFields(len(bpNonInfra.Databases)+1, &newDb)
+    		bpNonInfra.Databases = append(bpNonInfra.Databases, newDb)
+    	}
+    }
 
 	// Ask for Misc
 	if bp.Misc.ResourceGroupName == "" {
@@ -172,26 +167,61 @@ func Run(state storage.State, filePath string) common.Blueprint {
 		valField := s.Field(i)
 		typeField := s.Type().Field(i)
 		tag := typeField.Tag
-		val := valField.Interface().(string)
-        var defaultVal string
-		if val == "" {
-            defaultVal = tag.Get("default")
+        if valField.Kind() == reflect.Int {
+            val := valField.Interface().(int)
+            var defaultVal int
+    		if val == 0 {
+                defaultVal, err = strconv.Atoi(tag.Get("default"))
+        		if err != nil {
+        			log.Fatal(err)
+        		}
+            } else {
+                defaultVal = val
+            }
+    		fmt.Printf(
+    			"%s Default: %d.\n",
+    			tag.Get("question"),
+    			defaultVal,
+    		)
+    		scanner.Scan()
+    		input := scanner.Text()
+
+            if input == "" {
+        		valField.Set(reflect.ValueOf(defaultVal))
+            } else {
+                inputToInt, err := strconv.Atoi(input)
+        		if err != nil {
+        			log.Fatal(err)
+        		}
+        		valField.Set(reflect.ValueOf(inputToInt))
+            }
         } else {
-            defaultVal = val
+            val := valField.Interface().(string)
+            var defaultVal string
+    		if val == "" {
+                defaultVal = tag.Get("default")
+            } else {
+                defaultVal = val
+            }
+    		fmt.Printf(
+    			"%s Default: %s.\n",
+    			tag.Get("question"),
+    			defaultVal,
+    		)
+    		scanner.Scan()
+    		input := scanner.Text()
+
+    		if input == "" {
+    			valField.SetString(defaultVal)
+    		} else {
+    			valField.SetString(input)
+    		}
         }
-		fmt.Printf(
-			"%s Default: %s\n",
-			tag.Get("question"),
-			defaultVal,
-		)
-		scanner.Scan()
-		input := scanner.Text()
-		if input == "" {
-			valField.SetString(defaultVal)
-		} else {
-			valField.SetString(input)
-		}
 	}
+
+    bp.Infra = vmgroupcalc.Calc(vmgroupcalc.Requirment{
+		ConcurrentUserNumber: bp.Misc.ConcurrentUserNumber,
+	})
 
 	return bp
 }
@@ -202,12 +232,12 @@ func askForDbEmptyFields(num int, db *common.Database) {
 		valField := s.Field(i)
 		typeField := s.Type().Field(i)
 		tag := typeField.Tag
-		val := valField.Interface().(string)
+		val := valField.Interface()
 		allowedSentence := ""
 		if tag.Get("allow") != "" {
-			allowedSentence = fmt.Sprintf(" Allowed values: %s", tag.Get("allow"))
+			allowedSentence = fmt.Sprintf(" Allowed values: %s.", tag.Get("allow"))
 		}
-		if val == "" {
+		if val == reflect.Zero(valField.Type()).Interface() {
 			fmt.Printf(
 				"For the database No.%d: %s%s\n",
 				num,
@@ -216,10 +246,9 @@ func askForDbEmptyFields(num int, db *common.Database) {
 			)
 			scanner.Scan()
 			input := scanner.Text()
-			if err := db.ValidateField(typeField.Name, input); err != nil {
+			if err := db.ValidateField(typeField.Name, input, &valField); err != nil {
 				log.Fatal(err)
 			}
-			valField.SetString(input)
 		}
 	}
 }
