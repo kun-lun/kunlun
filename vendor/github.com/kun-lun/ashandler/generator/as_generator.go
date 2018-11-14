@@ -51,7 +51,10 @@ func (a ASGenerator) Generate(hostGroups []deployments.HostGroup, deployments []
 	a.fs.WriteFile(ansibleConfigFile, builtInRolesFS, 0644)
 
 	// generate the hosts files.
-	hostsFileContent := a.generateHostsFile(hostGroups)
+	hostsFileContent, err := a.generateHostsFile(hostGroups)
+	if err != nil {
+		return err
+	}
 	ansibleInventoriesDir, _ := a.stateStore.GetAnsibleInventoriesDir()
 	hostsFile := path.Join(ansibleInventoriesDir, "hosts.yml")
 	a.logger.Printf("writting hosts file to %s\n", hostsFile)
@@ -147,15 +150,18 @@ func (a ASGenerator) getAdminSSHPrivateKey() (string, error) {
 }
 
 // TODO error handling.
-func (a ASGenerator) generateHostsFile(hostGroups []deployments.HostGroup) []byte {
+func (a ASGenerator) generateHostsFile(hostGroups []deployments.HostGroup) ([]byte, error) {
 	// ---
 	// sample_server:
 	// 	 hosts:
 	// 	   172.16.8.4:
 	// 	     ansible_ssh_user: andy
-	// 	     ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -q andy@65.52.176.243"'
+	// 	     ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -q andy@65.52.176.243" -i private key'
 	hostGroupsSlices := yaml.MapSlice{}
-
+	privateKeyPath, err := a.getSSHPrivateKeyPath()
+	if err != nil {
+		return nil, err
+	}
 	for _, hostGroup := range hostGroups {
 		hosts := yaml.MapSlice{}
 
@@ -165,7 +171,7 @@ func (a ASGenerator) generateHostsFile(hostGroups []deployments.HostGroup) []byt
 				Value: AnsibleHost{
 					Host:          host.Host,
 					SSHUser:       host.User,
-					SSHCommonArgs: host.SSHCommonArgs,
+					SSHCommonArgs: host.SSHCommonArgs + " -i " + privateKeyPath,
 				},
 			}
 			hosts = append(hosts, hostSlice)
@@ -183,7 +189,7 @@ func (a ASGenerator) generateHostsFile(hostGroups []deployments.HostGroup) []byt
 		hostGroupsSlices = append(hostGroupsSlices, hostGroupSlice)
 	}
 	content, _ := yaml.Marshal(hostGroupsSlices)
-	return content
+	return content, nil
 }
 
 type AnsibleHost struct {

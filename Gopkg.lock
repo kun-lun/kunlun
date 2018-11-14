@@ -27,7 +27,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:abb3a3942c92d33b538009f923bcdc4fe310124e92e98265de5f97d5a0acad22"
+  digest = "1:1e5e9ddb00b6f58944dab2a72df8f7ec25754e066e549ddb8b74d4442a5eac08"
   name = "github.com/kun-lun/artifacts"
   packages = [
     "pkg/apis",
@@ -35,26 +35,26 @@
     "pkg/apis/deployments",
   ]
   pruneopts = "UT"
-  revision = "9fec7b27e40e0666623132340bfca6037079130d"
+  revision = "e0d89228b420af1b1e57ff917050df7aadaf420f"
 
 [[projects]]
   branch = "draft"
-  digest = "1:467cdc5a13944a84f2fee5c42cae67fe14884a82036a082bdd3d406417084740"
+  digest = "1:0c75846e9d6f11fb2997cf7febb7c6f33223e84896007b85e91b0f8b8fbcfa69"
   name = "github.com/kun-lun/ashandler"
   packages = [
     "generator",
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "7ebb981c706d2b8c955de0f178b5dcf5e9b3335b"
+  revision = "b510a5b9432d2f3108ab4143abc132c840af2ed3"
 
 [[projects]]
   branch = "draft"
-  digest = "1:796d5c5149d91af99bc31628c56ddb34ee6b7feb5a9746f71b34d7b405f365ad"
+  digest = "1:4d31d45a337bd0fd091d7c646159a93391316af9ae5651ad587a0f2bdaabbb90"
   name = "github.com/kun-lun/built-in-roles"
   packages = ["pkg/apis"]
   pruneopts = "UT"
-  revision = "bbb2fa194ccc54485b01b56367a767ff80b07895"
+  revision = "4ed7a5e279a5882ad742e69629dfff8cd752c724"
 
 [[projects]]
   branch = "draft"
@@ -85,7 +85,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:ff0b74dba94c5fa2a1a400fbc2bbd06e9ffcbe58c1d9e829871fec95422306dc"
+  digest = "1:fe459e251b705a53d0afd51db2dd0b3d03cad990cd161fefa935ed2560bc954d"
   name = "github.com/kun-lun/digester"
   packages = [
     "pkg/apis",
@@ -94,7 +94,7 @@
     "pkg/vmgroupcalc",
   ]
   pruneopts = "UT"
-  revision = "953c61dbc0d6e56aff5ad4145f9ff48b044a79c8"
+  revision = "7bfbe67163308c3b3b4d12846c3790aacd92d649"
 
 [[projects]]
   branch = "draft"
@@ -116,7 +116,7 @@
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "a54b1695dcb1fe0a44dcb4676083ab267fee2711"
+  revision = "c32d3d5412b6de6407696cc8ccda22e03e83964f"
 
 [[projects]]
   branch = "draft"
@@ -128,7 +128,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:26b8d96826d90f05370d9f9a5cd53ae9a48fa723f68bb8158e433edfcaeac8d0"
+  digest = "1:a5e6cda31945fa29ad300e8ff26f314e5c71a996d55910364818437599d57f7b"
   name = "github.com/kun-lun/tfhandler"
   packages = [
     "terraform",
@@ -136,7 +136,7 @@
     "terraform/templates",
   ]
   pruneopts = "UT"
-  revision = "30a14a4cac519625fd8fe27515370f26213b1f87"
+  revision = "c0c4ff85277c8e0278503125e1717937df62fa3b"
 
 [[projects]]
   branch = "master"
