@@ -50,11 +50,11 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:45f57a1e67b6412705b194e687d2a1db081df099e3bb712aedd79cc98da4b253"
+  digest = "1:9dcc42dc095e6606a61254d33b0fdfa138029ca65a96c5328e092c125cf327b8"
   name = "github.com/kun-lun/built-in-roles"
   packages = ["pkg/apis"]
   pruneopts = "UT"
-  revision = "27b288a58a559953e4a91719e5c805cdcfbcbdcd"
+  revision = "29d4482e1da7ed83f388c9290ff01a620ab8b014"
 
 [[projects]]
   branch = "draft"
