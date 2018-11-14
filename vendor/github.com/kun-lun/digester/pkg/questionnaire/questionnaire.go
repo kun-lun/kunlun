@@ -25,7 +25,7 @@ func Run(state storage.State, filePath string) common.Blueprint {
 	var err error
 	bp, _ := common.ImportBlueprintYaml(filePath)
 
-	fmt.Printf("Project source code path?")
+	fmt.Printf("Project source code path(git repository)?")
 	if bp.NonInfra.ProjectSourceCodePath != "" {
 		fmt.Printf(" Default: %s.", bp.NonInfra.ProjectSourceCodePath)
 	}

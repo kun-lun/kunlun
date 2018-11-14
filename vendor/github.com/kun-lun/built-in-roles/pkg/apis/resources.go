@@ -344,14 +344,14 @@ G5L+CQAA//9bGE+8yAQAAA==
 	"/built.in/kunlun.php/templates/nginx.j2": {
 		name:    "nginx.j2",
 		local:   "built.in/kunlun.php/templates/nginx.j2",
-		size:    525,
-		modtime: 1542194749,
+		size:    557,
+		modtime: 1542202678,
 		compressed: `
-H4sIAAAAAAAC/5SQwU4yMRSF9zzFXcwCQtIZ/s0fZUUMxEkUibJTaWqnzNTM9Da3xZCM47ObFgQCceHZ
-tfm+k546RR+KoO0B1Np5ZaBtoRCuekNBBTelNltukTx03bgHIKRUzvEaywBawnclfThyQgxQepBZlNnO
-YDWWwVdESH/Ro7CzwxtRCq/RwBc8r9LXF2Yr208/k0FcELIWzstSc2dr7bkVvuLarBFg1WfDyA/6KRsO
-kvGZoE2htnCSeBGEc9IK505BGP37zzKWsdH1VZZlP7g2st4UCi5y7CHRuMt2Eg0ALCbLW57PZw97KzkC
-+02/mU83j/liyWf53XQ+uZ9CUqDcNMr4+MmHHidJW8+NaFRo6nrddwAAAP//WNlIfg0CAAA=
+H4sIAAAAAAAC/5TQz0/CMBTA8fv+infYAULSDS9GOREDkUSRKDeVpnZl1Gxt814xJDj/dtPya4F48N22
+fT8veSOFXwphmwBUmrwysN1CIWj1YQUW3JTabLiz6KFpBgmAkFIR8cqWIXRoP5X04ZGjtSHKjphFzHaC
+VbYMXiFa/A+PYKcTgFi1JKE8yPi9slJ4bQ38wOsie39jbuU62XfajReGWQrystScXKU9d8KvuDZLC7Do
+sF7su52M9brp4AxoU6gNtCa+COC8dIKoHUL/6prlLGf925s8zw+5NrJaFwou5rQHRU2X21HUADAbzu/5
+ZDp+2qv0FOxv+ku+3D1PZnM+njyMpsPHEaSFletaGR9/5XEPSdTOcyNqFTY1SfMbAAD//952FkctAgAA
 `,
 	},
 
