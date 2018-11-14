@@ -166,12 +166,16 @@ func (a ASGenerator) generateHostsFile(hostGroups []deployments.HostGroup) ([]by
 		hosts := yaml.MapSlice{}
 
 		for _, host := range hostGroup.Hosts {
+			sshCommonArgs := ""
+			if host.SSHCommonArgs != "" {
+				sshCommonArgs = host.SSHCommonArgs + " -i " + privateKeyPath
+			}
 			hostSlice := yaml.MapItem{
 				Key: host.Alias,
 				Value: AnsibleHost{
 					Host:          host.Host,
 					SSHUser:       host.User,
-					SSHCommonArgs: host.SSHCommonArgs + " -i " + privateKeyPath,
+					SSHCommonArgs: sshCommonArgs,
 				},
 			}
 			hosts = append(hosts, hostSlice)

@@ -327,17 +327,17 @@ OWp0W31tzCmGpJeytxv87eB+d4OvkjBxRvtbVF7+KSov1uQ4ysRRcqBlpe/QWdTDx7vZahirYqDY0IPd
 	"/built.in/kunlun.php/tasks/main.yml": {
 		name:    "main.yml",
 		local:   "built.in/kunlun.php/tasks/main.yml",
-		size:    1228,
-		modtime: 1542198070,
+		size:    1224,
+		modtime: 1542199717,
 		compressed: `
-H4sIAAAAAAAC/6xUzW7cIBC+8xSjzaU92KmqpJX8Br226hmxeBaTYKDDOOlqte9eAV6atIpiKbkxzMf3
-M7PrrutEB3aOgVhScDgIAACvZhzAG+t/W6/7chAAe9QhN5gWbKVcEtIAFAK/TGUQyVlvzHLs4xRL50FR
-qhiAOEWJXu0dynw8xPkflbeKGsvvxqXDHENCes+JdPMx/XJbGMUV0OKBJ4RmpFtJv/nEyjmISt8rgwk+
-XCAfBUCa0LmhvQJb0QJAkVlXoafR0gC70wkihTvULBNpmZXhfN6JJvUDeYkwWkLNgSwmAXCwl4xR8VRZ
-LONcXubr8OhxZVc+2bzunKz1r8BQWGJFjCpN+6BolOWygeYw4gCfvt7eljKxYhyak6MAeLQ8ySy8huqe
-5XHB/M2zceA4hwcsMx/xoBbH9c8ByTK2kXz/H6WDP1izkGIb/AsTKkyyIi/GrnPZj9crT5/L3dO4ap/Q
-80b7qewq+6quq1bfjP+Mo+LnTQHAOEeXxaou6fWL0N99LjcjJn49wekE907mOcksBufzkzCv/R7WVX+5
-udmQ9E8AAAD//yEhKDXMBAAA
+H4sIAAAAAAAC/6xUzW7bMAy+6ymI9LId7A5DuwF+g1037CwoMiOr1d8oul0Q5N0HWY7WbihqoL2J4qfv
+h0zcdZ3owPoUiSVFh4MAAAjK4wDB2PDbBt0vBwGwRx1Lg2nGVso5Iw1AMfLLVAaRnA3GzMc+TUkAPCjK
+FZGmJDGovUNZjofk/1F4q6Cx/G5cOvoUM9J7TqPzx/zLbWEUV0BzAJ4QmpFuJf0WMivnICl9rwxm+HCB
+fBQAeULnhvYKbEULAEVmXYSeRksD7E4nSBTvULPMpGVRhvN5J5rUD+Q5wWgJNUeymAXAwV4yJsVTZbGM
+fnlZruNjwJVdhWzLukuy1r8CQ3FOFTGqPO2jolEulw3k44gDfPp6e7uUmRXj0JwcBcCj5UkW4TVU9yyP
+i+Zvno0DRx8fcJn5iAc1O65/DMiWsY3k+/8oHcPBmpkU2xhemNDCJCvyYuy6lP14vfL0pdw9jav2GQNv
+tJ+XXRVf1XXV6pvxn2lU/LwpABh9ckWs6pJevwb93eflZsTMryc4neDeyTInWcTgfH4S5rXfw7rqLzc3
+G5L+CQAA//9bGE+8yAQAAA==
 `,
 	},
 

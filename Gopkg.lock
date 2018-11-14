@@ -39,22 +39,22 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:0c75846e9d6f11fb2997cf7febb7c6f33223e84896007b85e91b0f8b8fbcfa69"
+  digest = "1:899c1757a998351e3dd2c838ce94f182749cd6adff09df962a67f3b06a30adc3"
   name = "github.com/kun-lun/ashandler"
   packages = [
     "generator",
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "b510a5b9432d2f3108ab4143abc132c840af2ed3"
+  revision = "d8378045705203c9910892c3172dda012063889d"
 
 [[projects]]
   branch = "draft"
-  digest = "1:4d31d45a337bd0fd091d7c646159a93391316af9ae5651ad587a0f2bdaabbb90"
+  digest = "1:4f8dbbd9d5266756d71ff726fbbfc948204039d123a8d9057eb65aa49cc939fe"
   name = "github.com/kun-lun/built-in-roles"
   packages = ["pkg/apis"]
   pruneopts = "UT"
-  revision = "4ed7a5e279a5882ad742e69629dfff8cd752c724"
+  revision = "289f8640aa574d0b149b57901df5a0dd30ddc9e7"
 
 [[projects]]
   branch = "draft"
