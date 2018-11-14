@@ -27,7 +27,7 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:8514b851ead349ac6050ecde0a91755ebd96daa15e861b5db96d51c64dc7ac6d"
+  digest = "1:3f3e3b7ff1c6fd1b0c7eb0e0e2f3849ea6e3959b3947eb80ffd6c8316d1da179"
   name = "github.com/kun-lun/artifacts"
   packages = [
     "pkg/apis",
@@ -35,7 +35,7 @@
     "pkg/apis/deployments",
   ]
   pruneopts = "UT"
-  revision = "1a851b20994abdcfabf00161890133d6cb783e6e"
+  revision = "b4643b1c2a0d33ee8d6420f697e02482202381c7"
 
 [[projects]]
   branch = "draft"
@@ -74,14 +74,14 @@
 
 [[projects]]
   branch = "draft"
-  digest = "1:43151b32b3159e93aea304bc29aad66fe2c4e3c5c50b10df74d74b684bb06bfb"
+  digest = "1:57db9c6490404f6608d4b94c64bf5870dcf95043b6192865575a5bd1667f5f13"
   name = "github.com/kun-lun/deployment-producer"
   packages = [
     "dpbuilder",
     "pkg/apis",
   ]
   pruneopts = "UT"
-  revision = "14ac27b43129ca02eef3a0361a8ffdd0cab4d9d2"
+  revision = "dbe69e7567900c6357e5a73a16c2c2c5ba657e2d"
 
 [[projects]]
   branch = "draft"
