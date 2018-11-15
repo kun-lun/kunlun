@@ -11,13 +11,15 @@
   * Install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
   * run `go get https://github.com/kun-lun/kunlun` to install our kunlun tool.
   * Export the environment variables needed:
-    export KL_IAAS=azure
-    export KL_AZURE_ENVIRONMENT=public
-    export KL_AZURE_CLIENT_ID=<YOUR_CLIENT_ID>
-    export KL_AZURE_CLIENT_SECRET=<YOUR_CLIENT_SECRET>
-    export KL_AZURE_REGION=<AZURE_REGION>
-    export KL_AZURE_SUBSCRIPTION_ID=<YOUR_SUBSCRIPTION_ID>
-    export KL_AZURE_TENANT_ID=<YOUR_TENANT_ID>
+```
+  export KL_IAAS=azure
+  export KL_AZURE_ENVIRONMENT=public
+  export KL_AZURE_CLIENT_ID=<YOUR_CLIENT_ID>
+  export KL_AZURE_CLIENT_SECRET=<YOUR_CLIENT_SECRET>
+  export KL_AZURE_REGION=<AZURE_REGION>
+  export KL_AZURE_SUBSCRIPTION_ID=<YOUR_SUBSCRIPTION_ID>
+  export KL_AZURE_TENANT_ID=<YOUR_TENANT_ID>
+```
 
 ## Analyze the Application you wish to deploy
 
