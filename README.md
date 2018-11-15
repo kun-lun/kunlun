@@ -22,7 +22,7 @@ export KL_AZURE_SUBSCRIPTION_ID=<YOUR_SUBSCRIPTION_ID>
 export KL_AZURE_TENANT_ID=<YOUR_TENANT_ID>
 ```
   * run `go get github.com/kun-lun/kunlun` to install our kunlun tool.
-  * `cd $GOPATH/src/github.com/kun-lun/kunlun/vmd/kl`
+  * `cd $GOPATH/src/github.com/kun-lun/kunlun/cmd/kl`
   * `go build`
 
 Now you will have a `kl` command.
@@ -83,7 +83,7 @@ Run `kl plan_deployment`
 
 You will get a folder called `deployments` which contains the deployment scripts.
 
-And if you think our built-in artifacts does not meed your requirements, 
+And if you think our built-in artifacts does not meet your requirements, 
 you can create one patch file to add more roles into the artifact and run 
 `kl plan_deployment` again. For example, you might want to add a firewall component:
 
