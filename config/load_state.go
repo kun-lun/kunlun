@@ -132,7 +132,7 @@ func (c Config) Bootstrap(globalFlags GlobalFlags, remainingArgs []string, argsL
 
 func modifiesState(command string) bool {
 	_, ok := map[string]struct{}{
-		"digest":     {}, // detect the project type and generate the draft manifests.
+		"analyze":    {}, // detect the project type and generate the draft manifests.
 		"plan-lift":  {}, // parse the draft manifests and generate the infrastructure manifests. (now in terraform)
 		"lift":       {}, // run the infra manifests. prepare the environment.
 		"plan-shift": {}, // generate the deployment scripts, (now in ansible)
