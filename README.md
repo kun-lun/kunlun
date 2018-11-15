@@ -29,7 +29,7 @@ Now you will have a `kl` command.
 
 ## Analyze the Application you wish to deploy
 
-```kl digest```
+```kl analyze```
 
 Please type in the git repository address for your application, e.g. https://github.com/moodle/moodle.git, as the project path.
 
