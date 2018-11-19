@@ -12,16 +12,23 @@
   * Install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
   * Setup the environment
 ```
+az login
 go env
+```
+  * Create a Service Principle for your application
+```
+export KL_AZURE_CLIENT_SECRET=password
+KL_AZURE_CLIENT_ID="$(az ad sp create-for-rbac --name kunlun --password $KL_AZURE_CLIENT_SECRET --output tsv --query appId)"
+export KL_AZURE_TENANT_ID=$(az ad sp show --id $KL_AZURE_CLIENT_ID --output tsv --query additionalProperties.appOwnerTenantId)
+```
+  * Set some environment variables
+```
 export KL_IAAS=azure
 export KL_AZURE_ENVIRONMENT=public
-export KL_AZURE_CLIENT_ID=<YOUR_CLIENT_ID>
-export KL_AZURE_CLIENT_SECRET=<YOUR_CLIENT_SECRET>
-export KL_AZURE_REGION=<AZURE_REGION>
-export KL_AZURE_SUBSCRIPTION_ID=<YOUR_SUBSCRIPTION_ID>
-export KL_AZURE_TENANT_ID=<YOUR_TENANT_ID>
+export KL_AZURE_REGION=southcentralus
+export KL_AZURE_SUBSCRIPTION_ID=$(az account show --output tsv --query id)
 ```
-  * run `go get github.com/kun-lun/kunlun` to install our kunlun tool.
+  * run `go get github.com/kun-lun/kunlun` to install the kunlun tool.
   * `cd $GOPATH/src/github.com/kun-lun/kunlun/cmd/kl`
   * `go build`
 
