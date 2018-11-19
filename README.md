@@ -10,26 +10,37 @@
 
   * Install [Go](https://golang.org/doc/install)
   * Install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
-  * Setup the environment
+  * Login to Azure
 ```
-go env
+az login
+```
+  * Create a Service Principle for your application
+```
+export KL_AZURE_CLIENT_SECRET=password
+KL_AZURE_CLIENT_ID="$(az ad sp create-for-rbac --name kunlun --password $KL_AZURE_CLIENT_SECRET --output tsv --query appId)"
+export KL_AZURE_TENANT_ID=$(az ad sp show --id $KL_AZURE_CLIENT_ID --output tsv --query additionalProperties.appOwnerTenantId)
+```
+  * Set some environment variables
+```
 export KL_IAAS=azure
 export KL_AZURE_ENVIRONMENT=public
-export KL_AZURE_CLIENT_ID=<YOUR_CLIENT_ID>
-export KL_AZURE_CLIENT_SECRET=<YOUR_CLIENT_SECRET>
-export KL_AZURE_REGION=<AZURE_REGION>
-export KL_AZURE_SUBSCRIPTION_ID=<YOUR_SUBSCRIPTION_ID>
-export KL_AZURE_TENANT_ID=<YOUR_TENANT_ID>
+export KL_AZURE_REGION=southcentralus
+export KL_AZURE_SUBSCRIPTION_ID=$(az account show --output tsv --query id)
 ```
-  * run `go get github.com/kun-lun/kunlun` to install our kunlun tool.
-  * `cd $GOPATH/src/github.com/kun-lun/kunlun/cmd/kl`
-  * `go build`
+
+## Building from Source
+
+ ```
+ cd $GOPATH/github.com/kun-lun/kunlun/cmd/kl
+ go build
+ 
+```
 
 Now you will have a `kl` command.
 
 ## Analyze the Application you wish to deploy
 
-```kl analyze```
+```./kl analyze```
 
 Please type in the git repository address for your application, e.g. https://github.com/moodle/moodle.git, as the project path.
 
@@ -50,7 +61,7 @@ If you think the file does not meet your requirements, you can create one patch 
 
 ## Plan the infrastructure
 
-Run `kl plan_infra` to generate the terraform scripts that will deploy your infrastrcuture.
+Run `./kl plan_infra` to generate the terraform scripts that will deploy your infrastrcuture.
 
 You will got an `infra` folder in your working dir.
 
@@ -58,7 +69,7 @@ If you want to setup some additional resources, you can also put the resources t
  
 ## Infrastrcuture Configuration
 
-Run `kl apply_infra`.
+Run `./kl apply_infra`.
 
 `outputs.yml` will be generated under the patches folder, with the content like this:
  
@@ -79,13 +90,13 @@ and then our deployment component would digest and produce the deployment script
  
 ## Plan Deployment
  
-Run `kl plan_deployment`
+Run `./kl plan_deployment`
 
 You will get a folder called `deployments` which contains the deployment scripts.
 
 And if you think our built-in artifacts does not meet your requirements, 
 you can create one patch file to add more roles into the artifact and run 
-`kl plan_deployment` again. For example, you might want to add a firewall component:
+`./kl plan_deployment` again. For example, you might want to add a firewall component:
 
 ```
 - type: replace
