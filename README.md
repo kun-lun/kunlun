@@ -9,6 +9,8 @@
 ## Prepare the Environment
 
   * Install [Go](https://golang.org/doc/install)
+  * Install [Terraform](https://www.terraform.io/intro/getting-started/install.html)
+    * Note that you need to ensure that the terraform binary is on your path
   * Install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
   * Login to Azure
 ```
